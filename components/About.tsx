@@ -7,7 +7,7 @@ export const About: React.FC = () => {
     <Section id="about" className="py-12 md:py-16">
       <SectionTitle subtitle="About me">Who I Am</SectionTitle>
 
-      <div className="grid grid-cols-1 md:grid-cols-2 gap-8 lg:gap-12 items-start">
+      <div className="grid grid-cols-1 md:grid-cols-2 gap-8 lg:gap-12 items-start relative">
         <motion.div 
           initial={{ opacity: 0, x: -30 }}
           whileInView={{ opacity: 1, x: 0 }}
@@ -29,18 +29,44 @@ export const About: React.FC = () => {
           </div>
         </motion.div>
 
+        {/* Mobile image - below text, no negative margins */}
+        <div className="md:hidden mt-8">
+          <motion.div 
+            className="relative max-h-[300px] max-w-[280px] mx-auto"
+            initial={{ opacity: 0, scale: 0.95 }}
+            whileInView={{ opacity: 1, scale: 1 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.6 }}
+          >
+            <div className="relative z-10 rounded-2xl overflow-hidden grayscale hover:grayscale-0 transition-all duration-500 shadow-xl aspect-[3/4]">
+              <img 
+                src="/projects/umair.jpg" 
+                alt="Umair Ahsan" 
+                className="w-full h-full object-cover object-top"
+              />
+              
+              {/* Overlay Gradient */}
+              <div className="absolute inset-0 bg-gradient-to-t from-gray-900/60 dark:from-[#121212] via-transparent to-transparent opacity-60"></div>
+            </div>
+            
+            {/* Decorative Backdrops */}
+            <div className="absolute -top-4 -right-4 w-full h-full border border-gray-200 dark:border-gray-800 rounded-2xl -z-10 transition-colors duration-500"></div>
+          </motion.div>
+        </div>
+
+        {/* Desktop image - with original negative margins */}
         <motion.div 
-          className="relative max-h-[220px] md:max-h-[150px] lg:max-h-[180px] max-w-full md:max-w-[70%] lg:max-w-[80%] md:-mt-28"
+          className="hidden md:block relative max-h-[80px] md:max-h-[40px] lg:max-h-[60px] max-w-full md:max-w-[30%] lg:max-w-[70%] md:-mt-36 md:ml-16"
           initial={{ opacity: 0, scale: 0.95 }}
           whileInView={{ opacity: 1, scale: 1 }}
           viewport={{ once: true }}
           transition={{ duration: 0.6 }}
         >
-          <div className="relative z-10 rounded-2xl overflow-hidden grayscale hover:grayscale-0 transition-all duration-500 shadow-xl">
+          <div className="relative z-10 rounded-2xl overflow-hidden grayscale hover:grayscale-0 transition-all duration-500 shadow-xl aspect-[3/4]">
             <img 
-              src="https://picsum.photos/seed/developer_umair/400/400" 
+              src="/projects/umair.jpg" 
               alt="Umair Ahsan" 
-              className="w-full h-full object-cover"
+              className="w-full h-full object-cover object-top"
             />
             
             {/* Overlay Gradient */}

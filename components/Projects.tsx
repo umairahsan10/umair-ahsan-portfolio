@@ -25,15 +25,6 @@ const projects: Project[] = [
   },
   {
     id: 3,
-    title: "ServiceTrustMe (STM)",
-    description:
-      "A multi-role service marketplace with provider onboarding, document verification, AI job matching, tier system, and booking workflows.",
-    tech: ["Next.js", "Nest.js", "Prisma", "PostgreSQL"],
-    image: "https://picsum.photos/seed/stm/800/600",
-    link: "#",
-  },
-  {
-    id: 4,
     title: "Email Automation System",
     description:
       "Scrapes websites → detects problems → generates personalized emails → sends at scale (50k–90k emails). Includes tracking and follow-up automation.",
@@ -42,7 +33,7 @@ const projects: Project[] = [
     link: "http://email-frontend-bytes.vercel.app/",
   },
   {
-    id: 5,
+    id: 4,
     title: "VerticalWorx",
     description:
       "Aviation sales & operations platform with analytics, dashboards, lead tracking, and automated reporting.",
@@ -51,7 +42,7 @@ const projects: Project[] = [
     link: "https://verticalworx.aero/",
   },
   {
-    id: 6,
+    id: 5,
     title: "BytesPlatform Website",
     description:
       "Highly animated marketing site with scroll-triggered effects and 3D visuals.",
@@ -60,7 +51,7 @@ const projects: Project[] = [
     link: "http://bytesplatform.com/",
   },
   {
-    id: 7,
+    id: 6,
     title: "IndigoTG Website",
     description:
       "Corporate website with clean UI and responsive layout for a trading & logistics company.",
@@ -91,11 +82,11 @@ export const Projects: React.FC = () => {
             <div className="w-full md:w-3/5 group cursor-pointer relative">
               <div className="absolute inset-0 bg-blue-500/10 blur-3xl rounded-full opacity-0 group-hover:opacity-20 transition-opacity duration-500"></div>
               <div className="relative overflow-hidden rounded-2xl border border-black/5 dark:border-white/10 bg-white dark:bg-[#1A1A1A] shadow-lg dark:shadow-none transition-all duration-500">
-                <div className="aspect-video w-full overflow-hidden">
+                <div className="aspect-[205/100] w-full overflow-hidden bg-gray-50 dark:bg-[#0A0A0A]">
                   <img
                     src={project.image}
                     alt={project.title}
-                    className="w-full h-full object-cover transform group-hover:scale-105 transition-transform duration-700"
+                    className="w-full h-full object-contain object-bottom transform group-hover:scale-105 transition-transform duration-700"
                   />
                 </div>
                 {/* Overlay UI elements */}

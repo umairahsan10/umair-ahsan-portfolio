@@ -35,7 +35,7 @@ const skills: SkillCategory[] = [
 
 export const Skills: React.FC = () => {
   return (
-    <Section id="skills" className="py-12 md:py-16">
+    <Section id="skills" className="pt-20 pb-12 md:py-16">
       <SectionTitle subtitle="Tech Stack">My Arsenal</SectionTitle>
       
       <ScrollReveal>
