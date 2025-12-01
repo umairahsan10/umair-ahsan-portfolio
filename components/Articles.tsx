@@ -33,7 +33,7 @@ const articles: Article[] = [
 
 export const Articles: React.FC = () => {
   return (
-    <Section id="articles">
+    <Section id="articles" className="py-12 md:py-16">
       <SectionTitle subtitle="Writing">Articles</SectionTitle>
 
       <div className="grid grid-cols-1 md:grid-cols-2 gap-8">

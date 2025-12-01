@@ -24,7 +24,7 @@ const experiences: ExperienceType[] = [
 
 export const Experience: React.FC = () => {
   return (
-    <Section id="experience" className="my-12">
+    <Section id="experience" className="py-12 md:py-16">
       <SectionTitle subtitle="Work path">Experience</SectionTitle>
 
       <div className="relative">

@@ -22,7 +22,7 @@ export const ScrollReveal: React.FC<{ children: React.ReactNode; delay?: number 
 
 export const Section: React.FC<SectionProps> = ({ children, id, className = '' }) => {
   return (
-    <section id={id} className={`py-20 md:py-32 px-6 md:px-12 max-w-7xl mx-auto relative ${className}`}>
+    <section id={id} className={`py-12 md:py-16 px-6 md:px-12 max-w-7xl mx-auto relative ${className}`}>
       {children}
     </section>
   );
@@ -30,7 +30,7 @@ export const Section: React.FC<SectionProps> = ({ children, id, className = '' }
 
 export const SectionTitle: React.FC<{ children: React.ReactNode; subtitle?: string }> = ({ children, subtitle }) => {
   return (
-    <div className="mb-16">
+    <div className="mb-12">
       {subtitle && (
         <motion.p 
           initial={{ opacity: 0, x: -20 }}

@@ -72,7 +72,7 @@ const projects: Project[] = [
 
 export const Projects: React.FC = () => {
   return (
-    <Section id="projects">
+    <Section id="projects" className="py-12 md:py-16">
       <SectionTitle subtitle="Projects">Selected Work</SectionTitle>
 
       <div className="space-y-20 md:space-y-32">
