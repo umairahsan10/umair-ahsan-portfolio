@@ -67,12 +67,6 @@ export const Navbar: React.FC = () => {
           >
             Projects
           </NavLink>
-          <NavLink
-            href="#articles"
-            onClick={(e) => scrollToSection(e, "articles")}
-          >
-            Articles
-          </NavLink>
         </div>
 
         <div className="flex items-center gap-3 md:gap-4">

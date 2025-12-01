@@ -14,7 +14,7 @@ const skills: SkillCategory[] = [
   {
     title: 'Backend Engineering',
     icon: Server,
-    skills: ['Nest.js', 'Node.js', 'PostgreSQL', 'Prisma', 'Supabase', 'REST APIs', 'Auth & RBAC']
+    skills: ['Nest.js', 'Node.js', 'PostgreSQL', 'Prisma', 'Supabase', 'REST APIs', 'Auth & RBAC', 'MongoDB', 'MySQL', 'Neon']
   },
   {
     title: 'Automation & AI',
@@ -24,7 +24,7 @@ const skills: SkillCategory[] = [
   {
     title: 'DevOps & Cloud',
     icon: Terminal,
-    skills: ['Vercel', 'Render', 'Neon', 'Cloudflare', 'GitHub CI/CD', 'Linux', 'Docker', 'Postman']
+    skills: ['Vercel', 'Render', 'Neon', 'Cloudflare', 'GitHub CI/CD', 'Linux', 'Docker', 'Postman', 'nginx']
   },
   // {
   //     title: 'Languages',

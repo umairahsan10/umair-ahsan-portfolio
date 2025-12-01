@@ -14,7 +14,7 @@ const experiences: ExperienceType[] = [
     achievements: [
       'Developed multiple full-stack enterprise platforms (CRM, STM, IntelliMaint AI, VerticalWorx).',
       'Architected complex multi-role systems with RBAC, dashboards, automations, and reporting.',
-      'Built real-time chat, Kanban boards, analytics, and scalable workflow systems.',
+      'Built real-time chat, analytics, and scalable workflow systems.',
       'Worked on AI-powered automation tools using OpenAI APIs and custom scrapers.',
       'Managed deployments on Vercel, Render, and Supabase.',
       'Ensured clean, modular, production-ready code.'

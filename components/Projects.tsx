@@ -9,7 +9,7 @@ const projects: Project[] = [
     id: 1,
     title: "CRM Platform",
     description:
-      "An enterprise CRM with real-time chat, Kanban boards, analytics dashboards, multi-department workflows, and automated reporting.",
+      "An enterprise CRM with real-time chat, analytics dashboards, multi-department workflows, and automated reporting.",
     tech: ["Next.js", "Nest.js", "PostgreSQL", "Prisma", "Supabase"],
     image: "projects/crm.png",
     link: "https://crm-frontend-eight-gamma.vercel.app/",

@@ -6,7 +6,6 @@ import { About } from './components/About';
 import { Skills } from './components/Skills';
 import { Experience } from './components/Experience';
 import { Projects } from './components/Projects';
-import { Articles } from './components/Articles';
 import { Footer } from './components/Footer';
 import { ThemeProvider } from './context/ThemeContext';
 import { Cursor } from './components/ui/Cursor';
@@ -45,7 +44,6 @@ function AppContent() {
         <Skills />
         <Experience />
         <Projects />
-        <Articles />
       </main>
       <Footer />
     </div>
