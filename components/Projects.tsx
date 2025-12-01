@@ -81,8 +81,8 @@ export const Projects: React.FC = () => {
             {/* Image Side */}
             <div className="w-full md:w-3/5 group cursor-pointer relative">
               <div className="absolute inset-0 bg-blue-500/10 blur-3xl rounded-full opacity-0 group-hover:opacity-20 transition-opacity duration-500"></div>
-              <div className="relative overflow-hidden rounded-2xl border border-black/5 dark:border-white/10 bg-white dark:bg-[#1A1A1A] shadow-lg dark:shadow-none transition-all duration-500">
-                <div className="aspect-[205/100] w-full overflow-hidden bg-gray-50 dark:bg-[#0A0A0A]">
+              <div className="relative overflow-hidden rounded-2xl border border-gray-400 dark:border-white/10 bg-white dark:bg-[#1A1A1A] shadow-lg dark:shadow-none transition-all duration-500">
+                <div className="aspect-[190/100] md:aspect-[205/100] w-full overflow-hidden bg-gray-50 dark:bg-[#0A0A0A]">
                   <img
                     src={project.image}
                     alt={project.title}
@@ -108,7 +108,7 @@ export const Projects: React.FC = () => {
                 {project.tech.map((t) => (
                   <span
                     key={t}
-                    className="px-3 py-1 rounded-full bg-gray-100 dark:bg-[#252525] border border-black/5 dark:border-white/5 text-xs font-mono text-gray-600 dark:text-gray-400 transition-colors duration-500"
+                    className="px-3 py-1 rounded-full bg-gray-100 dark:bg-[#252525] border border-gray-400 dark:border-white/5 text-xs font-mono text-gray-600 dark:text-gray-400 transition-colors duration-500"
                   >
                     {t}
                   </span>

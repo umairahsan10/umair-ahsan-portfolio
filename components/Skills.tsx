@@ -69,7 +69,7 @@ const SkillCard: React.FC<{ category: SkillCategory; index: number }> = ({ categ
       transition={{ duration: 0.2 }}
       onMouseEnter={() => setIsHovered(true)}
       onMouseLeave={() => setIsHovered(false)}
-      className="group relative overflow-hidden rounded-3xl bg-white dark:bg-[#1A1A1A] border border-gray-200 dark:border-white/5 p-8 transition-colors duration-500 hover:border-gray-300 dark:hover:border-white/20 shadow-sm hover:shadow-lg dark:shadow-none"
+      className="group relative overflow-hidden rounded-3xl bg-white dark:bg-[#1A1A1A] border border-gray-400 dark:border-white/5 p-8 transition-colors duration-500 hover:border-gray-500 dark:hover:border-white/20 shadow-sm hover:shadow-lg dark:shadow-none"
     >
       {/* Hover Gradient Effect */}
       <div 
@@ -91,7 +91,7 @@ const SkillCard: React.FC<{ category: SkillCategory; index: number }> = ({ categ
           {category.skills.map((skill, i) => (
             <span 
               key={skill} 
-              className="px-3 py-1.5 text-sm font-mono rounded-lg bg-gray-50 dark:bg-white/5 text-gray-600 dark:text-gray-400 border border-gray-200 dark:border-white/5 transition-all duration-300 group-hover:bg-gray-100 dark:group-hover:bg-white/10 group-hover:text-gray-900 dark:group-hover:text-gray-200 hover:!bg-gray-200 dark:hover:!bg-white/20 hover:!border-gray-300 dark:hover:!border-white/20"
+              className="px-3 py-1.5 text-sm font-mono rounded-lg bg-gray-50 dark:bg-white/5 text-gray-600 dark:text-gray-400 border border-gray-400 dark:border-white/5 transition-all duration-300 group-hover:bg-gray-100 dark:group-hover:bg-white/10 group-hover:text-gray-900 dark:group-hover:text-gray-200 hover:!bg-gray-200 dark:hover:!bg-white/20 hover:!border-gray-500 dark:hover:!border-white/20"
             >
               {skill}
             </span>

@@ -45,7 +45,7 @@ export const Experience: React.FC = () => {
               <div className="absolute left-4 md:left-8 top-0 -translate-x-1/2 w-4 h-4 rounded-full bg-blue-500 border-4 border-white dark:border-[#121212] shadow-lg z-10"></div>
 
               {/* Card */}
-              <div className="bg-white dark:bg-[#1A1A1A] border border-gray-200 dark:border-white/5 rounded-2xl p-6 md:p-8 hover:shadow-xl dark:hover:shadow-blue-900/10 transition-all duration-300">
+              <div className="bg-white dark:bg-[#1A1A1A] border border-gray-400 dark:border-white/5 rounded-2xl p-6 md:p-8 hover:shadow-xl hover:border-gray-500 dark:hover:shadow-blue-900/10 transition-all duration-300">
                 <div className="flex flex-col md:flex-row md:items-start md:justify-between mb-6 gap-4">
                   <div>
                     <h3 className="text-2xl font-bold text-gray-900 dark:text-white mb-1">{exp.company}</h3>
@@ -54,7 +54,7 @@ export const Experience: React.FC = () => {
                       <span>{exp.role}</span>
                     </div>
                   </div>
-                  <div className="flex items-center gap-2 px-3 py-1 rounded-full bg-gray-100 dark:bg-white/5 border border-black/5 dark:border-white/5 w-fit">
+                  <div className="flex items-center gap-2 px-3 py-1 rounded-full bg-gray-100 dark:bg-white/5 border border-gray-400 dark:border-white/5 w-fit">
                     <Calendar className="w-3 h-3 text-gray-500" />
                     <span className="text-xs font-mono font-medium text-gray-600 dark:text-gray-300">{exp.period}</span>
                   </div>
@@ -79,11 +79,11 @@ export const Experience: React.FC = () => {
                   </ul>
                 </div>
 
-                <div className="pt-6 border-t border-gray-100 dark:border-white/5">
+                <div className="pt-6 border-t border-gray-300 dark:border-white/5">
                   <div className="text-xs text-gray-400 font-mono mb-2">TECH STACK</div>
                   <div className="flex flex-wrap gap-2">
                     {exp.stack.split(', ').map((tech) => (
-                      <span key={tech} className="px-2 py-1 bg-gray-50 dark:bg-white/5 rounded text-xs text-gray-600 dark:text-gray-400 border border-gray-200 dark:border-white/5">
+                      <span key={tech} className="px-2 py-1 bg-gray-50 dark:bg-white/5 rounded text-xs text-gray-600 dark:text-gray-400 border border-gray-400 dark:border-white/5">
                         {tech}
                       </span>
                     ))}

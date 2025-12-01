@@ -12,13 +12,13 @@ export const Footer: React.FC = () => {
               Let's work<br />together.
             </h2>
             <div className="flex flex-wrap gap-4">
-               <a href="mailto:umairahsan2019@gmail.com" className="flex items-center gap-2 px-6 py-3 bg-white dark:bg-[#1E1E1E] rounded-full hover:bg-gray-200 dark:hover:bg-[#252525] transition-colors border border-black/5 dark:border-white/5 text-gray-900 dark:text-white shadow-sm dark:shadow-none">
-                 <Mail className="w-4 h-4" />
-                 <span>Email Me</span>
+               <a href="mailto:umairahsan2019@gmail.com" className="group flex items-center gap-2 px-6 py-3 bg-white dark:bg-[#1E1E1E] rounded-full hover:bg-gray-900 dark:hover:bg-white hover:text-white dark:hover:text-gray-900 transition-all duration-300 ease-out border border-black/5 dark:border-white/5 text-gray-900 dark:text-white shadow-sm dark:shadow-none hover:shadow-lg hover:scale-105 hover:-translate-y-0.5">
+                 <Mail className="w-4 h-4 group-hover:rotate-12 transition-transform duration-300" />
+                 <span className="font-medium">Email Me</span>
                </a>
-               <a href="https://linkedin.com/in/umair-ahsan-650315250" target="_blank" rel="noopener noreferrer" className="flex items-center gap-2 px-6 py-3 bg-white dark:bg-[#1E1E1E] rounded-full hover:bg-gray-200 dark:hover:bg-[#252525] transition-colors border border-black/5 dark:border-white/5 text-gray-900 dark:text-white shadow-sm dark:shadow-none">
-                 <Linkedin className="w-4 h-4" />
-                 <span>LinkedIn</span>
+               <a href="https://linkedin.com/in/umair-ahsan-650315250" target="_blank" rel="noopener noreferrer" className="group flex items-center gap-2 px-6 py-3 bg-white dark:bg-[#1E1E1E] rounded-full hover:bg-blue-600 dark:hover:bg-blue-600 hover:text-white transition-all duration-300 ease-out border border-black/5 dark:border-white/5 text-gray-900 dark:text-white shadow-sm dark:shadow-none hover:shadow-lg hover:shadow-blue-500/25 hover:scale-105 hover:-translate-y-0.5">
+                 <Linkedin className="w-4 h-4 group-hover:rotate-12 transition-transform duration-300" />
+                 <span className="font-medium">LinkedIn</span>
                </a>
             </div>
           </div>
@@ -42,7 +42,7 @@ export const Footer: React.FC = () => {
           </div>
 
           <div className="text-xs text-gray-600 font-mono">
-            © 2024. All Rights Reserved.
+            © 2025. All Rights Reserved.
           </div>
         </div>
       </div>

@@ -46,7 +46,7 @@ export const Articles: React.FC = () => {
             viewport={{ once: true }}
             transition={{ delay: index * 0.1 }}
             whileHover={{ y: -8 }}
-            className="group relative flex flex-col justify-between h-full min-h-[280px] p-8 rounded-[2rem] bg-white dark:bg-[#181818] border border-black/5 dark:border-white/5 overflow-hidden transition-all duration-500 hover:shadow-2xl hover:shadow-blue-500/10 dark:hover:shadow-blue-900/10"
+            className="group relative flex flex-col justify-between h-full min-h-[280px] p-8 rounded-[2rem] bg-white dark:bg-[#181818] border border-gray-400 dark:border-white/5 overflow-hidden transition-all duration-500 hover:shadow-2xl hover:shadow-blue-500/10 hover:border-gray-500 dark:hover:shadow-blue-900/10"
           >
             {/* Hover Gradient Background */}
             <div className="absolute inset-0 bg-gradient-to-br from-blue-50/50 via-transparent to-transparent dark:from-blue-900/10 dark:via-transparent dark:to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
@@ -73,7 +73,7 @@ export const Articles: React.FC = () => {
               </p>
             </div>
             
-            <div className="relative z-10 flex items-center justify-between pt-6 border-t border-gray-100 dark:border-white/5 mt-auto">
+            <div className="relative z-10 flex items-center justify-between pt-6 border-t border-gray-300 dark:border-white/5 mt-auto">
               <div className="flex items-center gap-2 text-sm font-semibold text-gray-900 dark:text-white group-hover:text-blue-600 dark:group-hover:text-blue-400 transition-colors">
                 <BookOpen className="w-4 h-4" />
                 <span>Read Article</span>

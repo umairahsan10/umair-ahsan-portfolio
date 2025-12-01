@@ -50,7 +50,7 @@ export const About: React.FC = () => {
             </div>
             
             {/* Decorative Backdrops */}
-            <div className="absolute -top-4 -right-4 w-full h-full border border-gray-200 dark:border-gray-800 rounded-2xl -z-10 transition-colors duration-500"></div>
+            <div className="absolute -top-4 -right-4 w-full h-full border border-gray-400 dark:border-gray-800 rounded-2xl -z-10 transition-colors duration-500"></div>
           </motion.div>
         </div>
 
@@ -74,7 +74,7 @@ export const About: React.FC = () => {
           </div>
           
           {/* Decorative Backdrops */}
-          <div className="absolute -top-4 -right-4 w-full h-full border border-gray-200 dark:border-gray-800 rounded-2xl -z-10 transition-colors duration-500"></div>
+          <div className="absolute -top-4 -right-4 w-full h-full border border-gray-400 dark:border-gray-800 rounded-2xl -z-10 transition-colors duration-500"></div>
         </motion.div>
       </div>
     </Section>
