@@ -19,7 +19,7 @@ const projects: Project[] = [
     title: "IntelliMaint AI",
     description:
       "AI-powered maintenance assistant that generates step-by-step troubleshooting guides from images and voice commands.",
-    tech: ["Next.js", "OpenAI APIs", "Voice Input", "Image Recognition"],
+    tech: ["Next.js", "OpenAI APIs", "Voice Input", "Image Recognition", "Tailwind CSS"],
     image: "projects/intellimaint.png",
     link: "https://intellimaint-ai.vercel.app/",
   },
@@ -58,6 +58,15 @@ const projects: Project[] = [
     tech: ["Next.js", "Tailwind CSS"],
     image: "projects/indigotg.png",
     link: "https://indigotg.vercel.app/",
+  },
+  {
+    id: 7,
+    title: "InsureLink (FYP)",
+    description:
+      "A centralized health-insurance automation platform that connects hospitals, insurers, corporates, and patients. Enables real-time eligibility verification, automated claim workflows, transparent communication, and an AI-powered chatbot for claim and policy guidance.",
+    tech: ["Next.js", "Nest.js", "PostgreSQL", "OpenAI API", "RBAC", "Automation"],
+    image: "projects/FYP.png",
+    link: "https://insure-link-henna.vercel.app/",
   },
 ];
 
