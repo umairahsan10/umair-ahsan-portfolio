@@ -45,7 +45,7 @@ export const Navbar: React.FC = () => {
       transition={{ duration: 0.35, ease: "easeInOut" }}
       className="fixed top-0 left-0 right-0 z-50 flex justify-center pt-6 px-6 pointer-events-none"
     >
-      <div className="pointer-events-auto bg-white/80 dark:bg-[#121212]/80 backdrop-blur-xl border border-black/5 dark:border-white/10 rounded-full px-6 md:px-8 py-3 flex items-center gap-8 shadow-2xl transition-all duration-300">
+      <div className="pointer-events-auto bg-white/80 dark:bg-[#121212]/80 backdrop-blur-xl border border-black/5 dark:border-white/10 rounded-full px-5 md:px-8 py-3 flex items-center gap-5 md:gap-8 shadow-2xl transition-all duration-300">
         <a
           href="#home"
           onClick={(e) => scrollToSection(e, "home")}
@@ -72,7 +72,7 @@ export const Navbar: React.FC = () => {
         <div className="flex items-center gap-3 md:gap-4">
           <button
             onClick={toggleTheme}
-            className="w-9 h-9 flex items-center justify-center rounded-full bg-gray-100 dark:bg-white/10 text-gray-600 dark:text-gray-300 hover:bg-gray-200 dark:hover:bg-white/20 transition-all"
+            className="w-11 h-11 flex items-center justify-center rounded-full bg-gray-100 dark:bg-white/10 text-gray-600 dark:text-gray-300 hover:bg-gray-200 dark:hover:bg-white/20 transition-all"
             aria-label="Toggle theme"
           >
             {theme === "dark" ? (
@@ -83,12 +83,10 @@ export const Navbar: React.FC = () => {
           </button>
 
           <a
-            href="https://drive.google.com/uc?export=download&id=147-Gf5QhZBJ_psUhIE_Y5DXAVuFDqMDQ"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="flex items-center gap-2 px-3 md:px-4 py-2 rounded-full border border-black/5 dark:border-white/10 bg-transparent hover:bg-gray-100 dark:hover:bg-white/5 transition-colors text-sm font-medium text-gray-900 dark:text-white group"
+            href="/resume.pdf"
+            download="Umair_Ahsan_Resume.pdf"
+            className="flex items-center justify-center gap-2 px-3 md:px-4 min-h-[44px] rounded-full border border-black/5 dark:border-white/10 bg-transparent hover:bg-gray-100 dark:hover:bg-white/5 transition-colors text-sm font-medium text-gray-900 dark:text-white group"
             aria-label="Download CV"
-            onClick={(e) => e.preventDefault()} // Placeholder - add real link here
           >
             <Download className="w-4 h-4 group-hover:translate-y-0.5 transition-transform" />
             <span className="hidden sm:block">CV</span>

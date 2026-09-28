@@ -13,6 +13,7 @@ export interface Experience {
   company: string;
   role: string;
   stack: string;
+  achievements: string[];
 }
 
 export interface Article {

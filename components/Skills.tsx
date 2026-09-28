@@ -7,9 +7,9 @@ import { SkillCategory } from '../types';
 // Enhanced skills data matching Umair's profile
 const skills: SkillCategory[] = [
   {
-    title: 'Frontend Ecosystem',
-    icon: Layout,
-    skills: ['Next.js', 'React', 'TypeScript', 'Tailwind CSS', 'Framer Motion', '@react-three/fiber', 'HTML', 'CSS']
+    title: 'Automation & AI',
+    icon: Workflow,
+    skills: ['Workflow Automation', 'Web Scraping', 'OpenAI Integrations', 'Data Processing', 'Bot Development']
   },
   {
     title: 'Backend Engineering',
@@ -17,9 +17,9 @@ const skills: SkillCategory[] = [
     skills: ['Nest.js', 'Node.js', 'PostgreSQL', 'Prisma', 'Supabase', 'REST APIs', 'Auth & RBAC', 'MongoDB', 'MySQL', 'Neon']
   },
   {
-    title: 'Automation & AI',
-    icon: Workflow,
-    skills: ['Workflow Automation', 'Web Scraping', 'OpenAI Integrations', 'Data Processing', 'Bot Development']
+    title: 'Frontend Ecosystem',
+    icon: Layout,
+    skills: ['Next.js', 'React', 'TypeScript', 'Tailwind CSS', 'Framer Motion', '@react-three/fiber', 'HTML', 'CSS']
   },
   {
     title: 'DevOps & Cloud',

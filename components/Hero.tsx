@@ -91,9 +91,9 @@ export const Hero: React.FC = () => {
               transition={{ duration: 0.5, delay: 0.6 }}
               className="flex items-center gap-6"
             >
-              <SocialLink href="https://github.com/umairahsan10" icon={Github} />
-              <SocialLink href="https://linkedin.com/in/umair-ahsan-650315250" icon={Linkedin} />
-              <SocialLink href="mailto:umairahsan2019@gmail.com" icon={Mail} />
+              <SocialLink href="https://github.com/umairahsan10" icon={Github} label="GitHub" />
+              <SocialLink href="https://linkedin.com/in/umair-ahsan-650315250" icon={Linkedin} label="LinkedIn" />
+              <SocialLink href="mailto:umairahsan2019@gmail.com" icon={Mail} label="Email" />
             </motion.div>
           </motion.div>
 
@@ -168,9 +168,9 @@ export const Hero: React.FC = () => {
   );
 };
 
-const SocialLink: React.FC<{ icon: any; href: string }> = ({ icon: Icon, href }) => (
-  <a href={href} target="_blank" rel="noopener noreferrer" className="flex items-center justify-center w-12 h-12 rounded-full border border-black/10 dark:border-white/10 bg-white/50 dark:bg-white/5 hover:bg-black hover:text-white dark:hover:bg-white dark:hover:text-black hover:scale-110 transition-all duration-300 text-gray-700 dark:text-gray-300">
-    <Icon className="w-5 h-5" />
+const SocialLink: React.FC<{ icon: any; href: string; label: string }> = ({ icon: Icon, href, label }) => (
+  <a href={href} target="_blank" rel="noopener noreferrer" aria-label={label} className="flex items-center justify-center w-12 h-12 rounded-full border border-black/10 dark:border-white/10 bg-white/50 dark:bg-white/5 hover:bg-black hover:text-white dark:hover:bg-white dark:hover:text-black hover:scale-110 transition-all duration-300 text-gray-700 dark:text-gray-300">
+    <Icon className="w-5 h-5" aria-hidden="true" />
   </a>
 );
 

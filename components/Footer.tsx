@@ -1,5 +1,5 @@
 import React from 'react';
-import { Github, Linkedin, Mail, Send } from 'lucide-react';
+import { Github, Linkedin, Mail, Send, Download } from 'lucide-react';
 
 export const Footer: React.FC = () => {
   return (
@@ -20,6 +20,10 @@ export const Footer: React.FC = () => {
                  <Linkedin className="w-4 h-4 group-hover:rotate-12 transition-transform duration-300" />
                  <span className="font-medium">LinkedIn</span>
                </a>
+               <a href="/resume.pdf" download="Umair_Ahsan_Resume.pdf" className="group flex items-center gap-2 px-6 py-3 bg-white dark:bg-[#1E1E1E] rounded-full hover:bg-green-600 dark:hover:bg-green-600 hover:text-white transition-all duration-300 ease-out border border-black/5 dark:border-white/5 text-gray-900 dark:text-white shadow-sm dark:shadow-none hover:shadow-lg hover:shadow-green-500/25 hover:scale-105 hover:-translate-y-0.5 min-h-[44px]" aria-label="Download resume">
+                 <Download className="w-4 h-4 group-hover:translate-y-0.5 transition-transform duration-300" />
+                 <span className="font-medium">Resume</span>
+               </a>
             </div>
           </div>
 
@@ -36,13 +40,13 @@ export const Footer: React.FC = () => {
           </div>
           
           <div className="flex gap-6">
-            <a href="https://github.com/umairahsan10" target="_blank" rel="noopener noreferrer" className="text-gray-500 hover:text-black dark:hover:text-white transition-colors"><Github className="w-5 h-5" /></a>
-            <a href="https://linkedin.com/in/umair-ahsan-650315250" target="_blank" rel="noopener noreferrer" className="text-gray-500 hover:text-black dark:hover:text-white transition-colors"><Linkedin className="w-5 h-5" /></a>
-            <a href="mailto:umairahsan2019@gmail.com" className="text-gray-500 hover:text-black dark:hover:text-white transition-colors"><Mail className="w-5 h-5" /></a>
+            <a href="https://github.com/umairahsan10" target="_blank" rel="noopener noreferrer" aria-label="GitHub" className="flex items-center justify-center w-11 h-11 text-gray-500 hover:text-black dark:hover:text-white transition-colors"><Github className="w-5 h-5" aria-hidden="true" /></a>
+            <a href="https://linkedin.com/in/umair-ahsan-650315250" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn" className="flex items-center justify-center w-11 h-11 text-gray-500 hover:text-black dark:hover:text-white transition-colors"><Linkedin className="w-5 h-5" aria-hidden="true" /></a>
+            <a href="mailto:umairahsan2019@gmail.com" aria-label="Email" className="flex items-center justify-center w-11 h-11 text-gray-500 hover:text-black dark:hover:text-white transition-colors"><Mail className="w-5 h-5" aria-hidden="true" /></a>
           </div>
 
           <div className="text-xs text-gray-600 font-mono">
-            © 2025. All Rights Reserved.
+            © 2026. All Rights Reserved.
           </div>
         </div>
       </div>

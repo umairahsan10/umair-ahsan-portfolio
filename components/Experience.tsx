@@ -7,7 +7,20 @@ import { Briefcase, Calendar, CheckCircle2 } from 'lucide-react';
 const experiences: ExperienceType[] = [
   {
     id: 1,
-    period: '2025 - Present',
+    period: 'June 2026 - Present',
+    company: 'Moavin Technologies',
+    role: 'Software Engineer',
+    stack: 'Spring Boot, MySQL, Redis, Docker, REST APIs',
+    achievements: [
+      'Developing scalable backend systems using Spring Boot, MySQL, Redis, and Docker.',
+      'Building and maintaining RESTful APIs for enterprise-grade applications.',
+      'Optimizing backend services, database queries, and caching layers for performance improvements.',
+      'Working on large-scale repositories following modular architecture and clean coding practices.'
+    ]
+  },
+  {
+    id: 2,
+    period: 'June 2025 - June 2026',
     company: 'BytesPak',
     role: 'Full-Stack Developer',
     stack: 'Next.js, Nest.js, React, PostgreSQL, Prisma, Tailwind',
