@@ -36,7 +36,7 @@ export const SectionTitle: React.FC<{ children: React.ReactNode; subtitle?: stri
           initial={{ opacity: 0, x: -20 }}
           whileInView={{ opacity: 1, x: 0 }}
           viewport={{ once: true }}
-          className="font-mono text-blue-600 dark:text-blue-400 mb-4 text-sm tracking-wider uppercase transition-colors duration-500"
+          className="font-mono text-[var(--color-accent)] mb-4 text-sm tracking-wider uppercase transition-colors duration-500"
         >
           // {subtitle}
         </motion.p>

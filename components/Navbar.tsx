@@ -45,7 +45,7 @@ export const Navbar: React.FC = () => {
       transition={{ duration: 0.35, ease: "easeInOut" }}
       className="fixed top-0 left-0 right-0 z-50 flex justify-center pt-6 px-6 pointer-events-none"
     >
-      <div className="pointer-events-auto bg-white/80 dark:bg-[#121212]/80 backdrop-blur-xl border border-black/5 dark:border-white/10 rounded-full px-5 md:px-8 py-3 flex items-center gap-5 md:gap-8 shadow-2xl transition-all duration-300">
+      <div className="pointer-events-auto bg-[var(--color-pill)] backdrop-blur-xl border border-black/5 dark:border-white/10 rounded-full px-5 md:px-8 py-3 flex items-center gap-5 md:gap-8 shadow-2xl transition-colors duration-300">
         <a
           href="#home"
           onClick={(e) => scrollToSection(e, "home")}
@@ -72,7 +72,7 @@ export const Navbar: React.FC = () => {
         <div className="flex items-center gap-3 md:gap-4">
           <button
             onClick={toggleTheme}
-            className="w-11 h-11 flex items-center justify-center rounded-full bg-gray-100 dark:bg-white/10 text-gray-600 dark:text-gray-300 hover:bg-gray-200 dark:hover:bg-white/20 transition-all"
+            className="w-11 h-11 flex items-center justify-center rounded-full bg-gray-100 dark:bg-white/10 text-gray-600 dark:text-gray-300 hover:bg-gray-200 dark:hover:bg-white/20 active:scale-95 transition-colors"
             aria-label="Toggle theme"
           >
             {theme === "dark" ? (
@@ -85,7 +85,7 @@ export const Navbar: React.FC = () => {
           <a
             href="/resume.pdf"
             download="Umair_Ahsan_Resume.pdf"
-            className="flex items-center justify-center gap-2 px-3 md:px-4 min-h-[44px] rounded-full border border-black/5 dark:border-white/10 bg-transparent hover:bg-gray-100 dark:hover:bg-white/5 transition-colors text-sm font-medium text-gray-900 dark:text-white group"
+            className="flex items-center justify-center gap-2 px-3 md:px-4 min-h-[44px] rounded-full border border-black/5 dark:border-white/10 bg-transparent hover:bg-gray-100 dark:hover:bg-white/5 active:scale-95 transition-[background-color,transform] text-sm font-medium text-gray-900 dark:text-white group"
             aria-label="Download CV"
           >
             <Download className="w-4 h-4 group-hover:translate-y-0.5 transition-transform" />
@@ -95,7 +95,7 @@ export const Navbar: React.FC = () => {
           <a
             href="#projects"
             onClick={(e) => scrollToSection(e, "projects")}
-            className="bg-gray-900 dark:bg-white text-white dark:text-black px-4 md:px-5 py-2 rounded-full text-xs md:text-sm font-bold hover:bg-gray-700 dark:hover:bg-gray-200 transition-colors flex items-center gap-2 cursor-pointer"
+            className="bg-gray-900 dark:bg-white text-white dark:text-black px-4 md:px-5 py-2 rounded-full text-xs md:text-sm font-bold hover:bg-gray-700 dark:hover:bg-gray-200 active:scale-95 transition-[background-color,transform] flex items-center gap-2 cursor-pointer"
           >
             Work
             <span className="bg-white dark:bg-black text-black dark:text-white rounded-full w-4 h-4 flex items-center justify-center text-[10px]">
@@ -119,6 +119,6 @@ const NavLink: React.FC<{
     className="text-gray-600 dark:text-gray-400 hover:text-black dark:hover:text-white transition-colors relative group"
   >
     {children}
-    <span className="absolute -bottom-1 left-0 w-full h-px bg-black dark:bg-white origin-center scale-x-0 opacity-0 transition-all duration-300 ease-out group-hover:scale-x-100 group-hover:opacity-100"></span>
+    <span className="absolute -bottom-1 left-0 w-full h-px bg-black dark:bg-white origin-center scale-x-0 opacity-0 transition-[transform,opacity] duration-300 ease-out group-hover:scale-x-100 group-hover:opacity-100"></span>
   </a>
 );

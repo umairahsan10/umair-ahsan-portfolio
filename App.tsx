@@ -1,5 +1,6 @@
 import React, { useEffect } from "react";
 import Lenis from "lenis";
+import { MotionConfig } from "framer-motion";
 import { Navbar } from "./components/Navbar";
 import { Hero } from "./components/Hero";
 import { About } from "./components/About";
@@ -8,10 +9,12 @@ import { Experience } from "./components/Experience";
 import { Projects } from "./components/Projects";
 import { Footer } from "./components/Footer";
 import { ThemeProvider } from "./context/ThemeContext";
-import { Cursor } from "./components/ui/Cursor";
 
 function AppContent() {
   useEffect(() => {
+    const reducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)");
+    if (reducedMotion.matches) return;
+
     const lenis = new Lenis({
       duration: 1.2,
       easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
@@ -35,8 +38,7 @@ function AppContent() {
   }, []);
 
   return (
-    <div className="bg-gray-50 dark:bg-[#121212] min-h-screen text-gray-900 dark:text-white selection:bg-blue-500/30 transition-colors duration-500 cursor-none md:cursor-auto">
-      <Cursor />
+    <div className="bg-[var(--color-bg)] min-h-screen text-gray-900 dark:text-white selection:bg-blue-500/30 transition-colors duration-500">
       <Navbar />
       <main>
         <Hero />
@@ -53,7 +55,9 @@ function AppContent() {
 function App() {
   return (
     <ThemeProvider>
-      <AppContent />
+      <MotionConfig reducedMotion="user">
+        <AppContent />
+      </MotionConfig>
     </ThemeProvider>
   );
 }

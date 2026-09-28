@@ -55,10 +55,10 @@ export const Experience: React.FC = () => {
               className="relative pl-12 md:pl-24"
             >
               {/* Timeline Dot */}
-              <div className="absolute left-4 md:left-8 top-0 -translate-x-1/2 w-4 h-4 rounded-full bg-blue-500 border-4 border-white dark:border-[#121212] shadow-lg z-10"></div>
+              <div className="absolute left-4 md:left-8 top-0 -translate-x-1/2 w-4 h-4 rounded-full bg-blue-500 border-4 border-white dark:border-[var(--color-bg)] shadow-lg z-10"></div>
 
               {/* Card */}
-              <div className="bg-white dark:bg-[#1A1A1A] border border-gray-400 dark:border-white/5 rounded-2xl p-6 md:p-8 hover:shadow-xl hover:border-gray-500 dark:hover:shadow-blue-900/10 transition-all duration-300">
+              <div className="bg-white dark:bg-[var(--color-card)] border border-gray-400 dark:border-white/5 rounded-2xl p-6 md:p-8 hover:shadow-xl hover:border-gray-500 dark:hover:shadow-blue-900/10 transition-[box-shadow,border-color] duration-300">
                 <div className="flex flex-col md:flex-row md:items-start md:justify-between mb-6 gap-4">
                   <div>
                     <h3 className="text-2xl font-bold text-gray-900 dark:text-white mb-1">{exp.company}</h3>

@@ -3,7 +3,7 @@ import { Github, Linkedin, Mail, Send, Download } from 'lucide-react';
 
 export const Footer: React.FC = () => {
   return (
-    <footer className="bg-gray-100 dark:bg-[#0A0A0A] py-20 px-6 md:px-12 border-t border-black/5 dark:border-white/5 transition-colors duration-500">
+    <footer className="bg-[var(--color-footer)] py-20 px-6 md:px-12 border-t border-black/5 dark:border-white/5 transition-colors duration-500">
       <div className="max-w-7xl mx-auto">
         <div className="flex flex-col md:flex-row justify-between items-start md:items-end mb-20 gap-10">
           <div>
@@ -12,16 +12,16 @@ export const Footer: React.FC = () => {
               Let's work<br />together.
             </h2>
             <div className="flex flex-wrap gap-4">
-               <a href="mailto:umairahsan2019@gmail.com" className="group flex items-center gap-2 px-6 py-3 bg-white dark:bg-[#1E1E1E] rounded-full hover:bg-gray-900 dark:hover:bg-white hover:text-white dark:hover:text-gray-900 transition-all duration-300 ease-out border border-black/5 dark:border-white/5 text-gray-900 dark:text-white shadow-sm dark:shadow-none hover:shadow-lg hover:scale-105 hover:-translate-y-0.5">
-                 <Mail className="w-4 h-4 group-hover:rotate-12 transition-transform duration-300" />
+               <a href="mailto:umairahsan2019@gmail.com" className="group flex items-center gap-2 px-6 py-3 bg-[var(--color-elevated)] rounded-full hover:bg-gray-900 dark:hover:bg-white hover:text-white dark:hover:text-gray-900 transition-[background-color,color,box-shadow,transform] duration-300 ease-out active:scale-[0.97] border border-black/5 dark:border-white/5 text-gray-900 dark:text-white shadow-sm dark:shadow-none hover:shadow-lg hover:scale-105 hover:-translate-y-0.5">
+                 <Mail className="w-4 h-4 group-hover:rotate-12 transition-transform duration-300" aria-hidden="true" />
                  <span className="font-medium">Email Me</span>
                </a>
-               <a href="https://linkedin.com/in/umair-ahsan-650315250" target="_blank" rel="noopener noreferrer" className="group flex items-center gap-2 px-6 py-3 bg-white dark:bg-[#1E1E1E] rounded-full hover:bg-blue-600 dark:hover:bg-blue-600 hover:text-white transition-all duration-300 ease-out border border-black/5 dark:border-white/5 text-gray-900 dark:text-white shadow-sm dark:shadow-none hover:shadow-lg hover:shadow-blue-500/25 hover:scale-105 hover:-translate-y-0.5">
-                 <Linkedin className="w-4 h-4 group-hover:rotate-12 transition-transform duration-300" />
+               <a href="https://linkedin.com/in/umair-ahsan-650315250" target="_blank" rel="noopener noreferrer" className="group flex items-center gap-2 px-6 py-3 bg-[var(--color-elevated)] rounded-full hover:bg-blue-600 dark:hover:bg-blue-600 hover:text-white transition-[background-color,color,box-shadow,transform] duration-300 ease-out active:scale-[0.97] border border-black/5 dark:border-white/5 text-gray-900 dark:text-white shadow-sm dark:shadow-none hover:shadow-lg hover:shadow-blue-500/25 hover:scale-105 hover:-translate-y-0.5">
+                 <Linkedin className="w-4 h-4 group-hover:rotate-12 transition-transform duration-300" aria-hidden="true" />
                  <span className="font-medium">LinkedIn</span>
                </a>
-               <a href="/resume.pdf" download="Umair_Ahsan_Resume.pdf" className="group flex items-center gap-2 px-6 py-3 bg-white dark:bg-[#1E1E1E] rounded-full hover:bg-green-600 dark:hover:bg-green-600 hover:text-white transition-all duration-300 ease-out border border-black/5 dark:border-white/5 text-gray-900 dark:text-white shadow-sm dark:shadow-none hover:shadow-lg hover:shadow-green-500/25 hover:scale-105 hover:-translate-y-0.5 min-h-[44px]" aria-label="Download resume">
-                 <Download className="w-4 h-4 group-hover:translate-y-0.5 transition-transform duration-300" />
+               <a href="/resume.pdf" download="Umair_Ahsan_Resume.pdf" className="group flex items-center gap-2 px-6 py-3 bg-[var(--color-elevated)] rounded-full hover:bg-green-600 dark:hover:bg-green-600 hover:text-white transition-[background-color,color,box-shadow,transform] duration-300 ease-out active:scale-[0.97] border border-black/5 dark:border-white/5 text-gray-900 dark:text-white shadow-sm dark:shadow-none hover:shadow-lg hover:shadow-green-500/25 hover:scale-105 hover:-translate-y-0.5 min-h-[44px]" aria-label="Download resume">
+                 <Download className="w-4 h-4 group-hover:translate-y-0.5 transition-transform duration-300" aria-hidden="true" />
                  <span className="font-medium">Resume</span>
                </a>
             </div>
@@ -29,8 +29,7 @@ export const Footer: React.FC = () => {
 
           <div className="text-right">
              <div className="font-mono text-sm text-gray-500 mb-2">Site</div>
-             <div className="text-gray-600 dark:text-gray-300 transition-colors duration-500">Handcrafted by Umair Ahsan /</div>
-             <div className="text-gray-600 dark:text-gray-300 transition-colors duration-500">Powered by React</div>
+             <div className="text-gray-600 dark:text-gray-300 transition-colors duration-500">Handcrafted by Umair Ahsan</div>
           </div>
         </div>
 

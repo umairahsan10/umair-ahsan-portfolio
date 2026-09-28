@@ -88,10 +88,16 @@ export const Projects: React.FC = () => {
             } gap-12 items-center`}
           >
             {/* Image Side */}
-            <div className="w-full md:w-3/5 group cursor-pointer relative">
+            <a
+              href={project.link}
+              target="_blank"
+              rel="noopener noreferrer"
+              aria-label={`Open ${project.title}`}
+              className="w-full md:w-3/5 group relative block"
+            >
               <div className="absolute inset-0 bg-blue-500/10 blur-3xl rounded-full opacity-0 group-hover:opacity-20 transition-opacity duration-500"></div>
-              <div className="relative overflow-hidden rounded-2xl border border-gray-400 dark:border-white/10 bg-white dark:bg-[#1A1A1A] shadow-lg dark:shadow-none transition-all duration-500">
-                <div className="aspect-[190/100] md:aspect-[205/100] w-full overflow-hidden bg-gray-50 dark:bg-[#0A0A0A]">
+              <div className="relative overflow-hidden rounded-2xl border border-gray-400 dark:border-white/10 bg-white dark:bg-[var(--color-card)] shadow-lg dark:shadow-none transition-colors duration-500 group-hover:shadow-xl group-hover:border-blue-400/60 dark:group-hover:border-white/20">
+                <div className="aspect-[190/100] md:aspect-[205/100] w-full overflow-hidden bg-[var(--color-deep)]">
                   <img
                     src={project.image}
                     alt={project.title}
@@ -105,7 +111,7 @@ export const Projects: React.FC = () => {
                   <div className="w-2 h-2 rounded-full bg-green-500"></div>
                 </div>
               </div>
-            </div>
+            </a>
 
             {/* Content Side */}
             <div className="w-full md:w-2/5">
@@ -117,7 +123,7 @@ export const Projects: React.FC = () => {
                 {project.tech.map((t) => (
                   <span
                     key={t}
-                    className="px-3 py-1 rounded-full bg-gray-100 dark:bg-[#252525] border border-gray-400 dark:border-white/5 text-xs font-mono text-gray-600 dark:text-gray-400 transition-colors duration-500"
+                    className="px-3 py-1 rounded-full bg-[var(--color-chip)] border border-gray-400 dark:border-white/5 text-xs font-mono text-gray-600 dark:text-gray-400 transition-colors duration-500"
                   >
                     {t}
                   </span>
@@ -132,7 +138,7 @@ export const Projects: React.FC = () => {
                 href={project.link}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="inline-flex items-center gap-2 px-6 py-3 bg-gray-900 dark:bg-white text-white dark:text-black rounded-full font-medium hover:bg-gray-700 dark:hover:bg-gray-200 transition-colors group"
+                className="inline-flex items-center gap-2 px-6 py-3 bg-gray-900 dark:bg-white text-white dark:text-black rounded-full font-medium hover:bg-gray-700 dark:hover:bg-gray-200 active:scale-[0.97] transition-[background-color,transform] group"
               >
                 View Project
                 <ArrowUpRight className="w-4 h-4 group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform" />

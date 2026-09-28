@@ -30,7 +30,7 @@ export const About: React.FC = () => {
         </motion.div>
 
         {/* Mobile image - below text, no negative margins */}
-        <div className="md:hidden mt-8">
+        <div className="md:hidden mt-0">
           <motion.div 
             className="relative max-h-[300px] max-w-[280px] mx-auto"
             initial={{ opacity: 0, scale: 0.95 }}
@@ -38,7 +38,7 @@ export const About: React.FC = () => {
             viewport={{ once: true }}
             transition={{ duration: 0.6 }}
           >
-            <div className="relative z-10 rounded-2xl overflow-hidden grayscale hover:grayscale-0 transition-all duration-500 shadow-xl aspect-[3/4]">
+            <div className="relative z-10 rounded-2xl overflow-hidden grayscale hover:grayscale-0 transition-[filter] duration-500 shadow-xl aspect-[3/4]">
               <img 
                 src="/projects/umair.jpg" 
                 alt="Umair Ahsan" 
@@ -46,7 +46,7 @@ export const About: React.FC = () => {
               />
               
               {/* Overlay Gradient */}
-              <div className="absolute inset-0 bg-gradient-to-t from-gray-900/60 dark:from-[#121212] via-transparent to-transparent opacity-60"></div>
+              <div className="absolute inset-0 bg-gradient-to-t from-gray-900/60 dark:from-[var(--color-bg)] via-transparent to-transparent opacity-60"></div>
             </div>
             
             {/* Decorative Backdrops */}
@@ -54,15 +54,15 @@ export const About: React.FC = () => {
           </motion.div>
         </div>
 
-        {/* Desktop image - with original negative margins */}
+        {/* Desktop image */}
         <motion.div 
-          className="hidden md:block relative max-h-[80px] md:max-h-[40px] lg:max-h-[60px] max-w-full md:max-w-[30%] lg:max-w-[70%] md:-mt-36 md:ml-16"
+          className="hidden md:block relative w-full max-w-[320px] lg:max-w-[360px] justify-self-end md:-mt-36 lg:-mt-40"
           initial={{ opacity: 0, scale: 0.95 }}
           whileInView={{ opacity: 1, scale: 1 }}
           viewport={{ once: true }}
           transition={{ duration: 0.6 }}
         >
-          <div className="relative z-10 rounded-2xl overflow-hidden grayscale hover:grayscale-0 transition-all duration-500 shadow-xl aspect-[3/4]">
+          <div className="relative z-10 rounded-2xl overflow-hidden grayscale hover:grayscale-0 transition-[filter] duration-500 shadow-xl aspect-[3/4]">
             <img 
               src="/projects/umair.jpg" 
               alt="Umair Ahsan" 
@@ -70,7 +70,7 @@ export const About: React.FC = () => {
             />
             
             {/* Overlay Gradient */}
-            <div className="absolute inset-0 bg-gradient-to-t from-gray-900/60 dark:from-[#121212] via-transparent to-transparent opacity-60"></div>
+            <div className="absolute inset-0 bg-gradient-to-t from-gray-900/60 dark:from-[var(--color-bg)] via-transparent to-transparent opacity-60"></div>
           </div>
           
           {/* Decorative Backdrops */}

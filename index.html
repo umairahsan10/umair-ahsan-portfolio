@@ -1,9 +1,22 @@
 <!DOCTYPE html>
-<html lang="en" class="scroll-smooth" style="scroll-padding-top: 100px;">
+<html lang="en" class="scroll-smooth dark" style="scroll-padding-top: 100px;">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Umair Ahsan | Full-Stack Developer</title>
+    <meta
+      name="description"
+      content="Umair Ahsan — Full-Stack Developer building enterprise platforms, AI automation systems, and scalable web applications with Next.js, Nest.js, and TypeScript."
+    />
+    <meta name="theme-color" content="#121212" />
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content="Umair Ahsan | Full-Stack Developer" />
+    <meta
+      property="og:description"
+      content="Full-Stack Developer building enterprise platforms and AI automation systems."
+    />
+    <meta property="og:image" content="/projects/umair.jpg" />
+    <meta name="twitter:card" content="summary" />
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     <script src="https://cdn.tailwindcss.com"></script>
     <script>
@@ -23,16 +36,58 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@300;400;500;600&family=Open+Sans:wght@300;400;600;700&display=swap" rel="stylesheet">
     <style>
+      /* Design tokens (single source of truth) */
+      :root {
+        --color-bg: #f9fafb;
+        --color-deep: #f9fafb;
+        --color-footer: #f3f4f6;
+        --color-card: #ffffff;
+        --color-elevated: #ffffff;
+        --color-chip: #f3f4f6;
+        --color-pill: rgba(255, 255, 255, 0.8);
+        --color-accent: #2563eb;
+        --color-success: #22c55e;
+      }
+      .dark {
+        --color-bg: #121212;
+        --color-deep: #0a0a0a;
+        --color-footer: #0a0a0a;
+        --color-card: #1a1a1a;
+        --color-elevated: #1e1e1e;
+        --color-chip: #252525;
+        --color-pill: rgba(18, 18, 18, 0.8);
+        --color-accent: #60a5fa;
+        --color-success: #22c55e;
+      }
+
+      html {
+        -webkit-font-smoothing: antialiased;
+        -moz-osx-font-smoothing: grayscale;
+      }
+
       body {
         transition-property: color, background-color, border-color, text-decoration-color, fill, stroke;
         transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
         transition-duration: 500ms;
       }
-      
-      .font-mono {
-        font-family: 'Fira Code', monospace;
+
+      /* Balanced wrapping for headings */
+      h1, h2 {
+        text-wrap: balance;
       }
-      
+
+      /* Visible keyboard focus */
+      :focus-visible {
+        outline: 2px solid var(--color-accent);
+        outline-offset: 2px;
+      }
+
+      @media (prefers-reduced-motion: reduce) {
+        html {
+          scroll-behavior: auto !important;
+        }
+      }
+
       /* Custom Scrollbar */
       ::-webkit-scrollbar {
         width: 8px;
@@ -47,7 +102,7 @@
       ::-webkit-scrollbar-thumb:hover {
         background: #555;
       }
-      
+
       /* Utilities */
       .text-outline {
         -webkit-text-stroke: 1px rgba(0, 0, 0, 0.2);
@@ -56,23 +111,23 @@
       .dark .text-outline {
         -webkit-text-stroke: 1px rgba(255, 255, 255, 0.2);
       }
-      
+
       html.lenis, html.lenis body {
         height: auto;
       }
-      
+
       .lenis.lenis-smooth {
         scroll-behavior: auto !important;
       }
-      
+
       .lenis.lenis-smooth [data-lenis-prevent] {
         overscroll-behavior: contain;
       }
-      
+
       .lenis.lenis-stopped {
         overflow: hidden;
       }
-      
+
       .lenis.lenis-scrolling iframe {
         pointer-events: none;
       }
@@ -90,7 +145,7 @@
 }
 </script>
 </head>
-  <body class="bg-gray-50 text-gray-900 dark:bg-[#121212] dark:text-[#F5F5F5]">
+  <body class="bg-[var(--color-bg)] text-gray-900 dark:text-[#F5F5F5]">
     <div id="root"></div>
   <script type="module" src="/index.tsx"></script>
 </body>

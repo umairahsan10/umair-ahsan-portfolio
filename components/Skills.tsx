@@ -14,7 +14,7 @@ const skills: SkillCategory[] = [
   {
     title: 'Backend Engineering',
     icon: Server,
-    skills: ['Nest.js', 'Node.js', 'PostgreSQL', 'Prisma', 'Supabase', 'REST APIs', 'Auth & RBAC', 'MongoDB', 'MySQL', 'Neon']
+    skills: ['Nest.js', 'Node.js', 'PostgreSQL', 'Prisma', 'Supabase', 'REST APIs', 'Auth & RBAC', 'MongoDB', 'MySQL']
   },
   {
     title: 'Frontend Ecosystem',
@@ -69,7 +69,7 @@ const SkillCard: React.FC<{ category: SkillCategory; index: number }> = ({ categ
       transition={{ duration: 0.2 }}
       onMouseEnter={() => setIsHovered(true)}
       onMouseLeave={() => setIsHovered(false)}
-      className="group relative overflow-hidden rounded-3xl bg-white dark:bg-[#1A1A1A] border border-gray-400 dark:border-white/5 p-8 transition-colors duration-500 hover:border-gray-500 dark:hover:border-white/20 shadow-sm hover:shadow-lg dark:shadow-none"
+      className="group relative overflow-hidden rounded-3xl bg-white dark:bg-[var(--color-card)] border border-gray-400 dark:border-white/5 p-8 transition-colors duration-500 hover:border-gray-500 dark:hover:border-white/20 shadow-sm hover:shadow-lg dark:shadow-none"
     >
       {/* Hover Gradient Effect */}
       <div 
@@ -82,7 +82,7 @@ const SkillCard: React.FC<{ category: SkillCategory; index: number }> = ({ categ
       <div className="relative z-10">
         <div className="flex items-center gap-4 mb-8">
           <div className={`w-12 h-12 rounded-2xl flex items-center justify-center transition-colors duration-500 ${isHovered ? 'bg-blue-500 text-white' : 'bg-gray-100 dark:bg-white/5 text-gray-600 dark:text-gray-400'}`}>
-            <category.icon className="w-6 h-6" />
+            <category.icon className="w-6 h-6" aria-hidden="true" />
           </div>
           <h3 className="text-xl font-bold tracking-tight text-gray-900 dark:text-gray-100 transition-colors duration-500">{category.title}</h3>
         </div>
@@ -91,7 +91,7 @@ const SkillCard: React.FC<{ category: SkillCategory; index: number }> = ({ categ
           {category.skills.map((skill, i) => (
             <span 
               key={skill} 
-              className="px-3 py-1.5 text-sm font-mono rounded-lg bg-gray-50 dark:bg-white/5 text-gray-600 dark:text-gray-400 border border-gray-400 dark:border-white/5 transition-all duration-300 group-hover:bg-gray-100 dark:group-hover:bg-white/10 group-hover:text-gray-900 dark:group-hover:text-gray-200 hover:!bg-gray-200 dark:hover:!bg-white/20 hover:!border-gray-500 dark:hover:!border-white/20"
+              className="px-3 py-1.5 text-sm font-mono rounded-lg bg-gray-50 dark:bg-white/5 text-gray-600 dark:text-gray-400 border border-gray-400 dark:border-white/5 transition-[background-color,text-color,border-color] duration-300 group-hover:bg-gray-100 dark:group-hover:bg-white/10 group-hover:text-gray-900 dark:group-hover:text-gray-200 hover:!bg-gray-200 dark:hover:!bg-white/20 hover:!border-gray-500 dark:hover:!border-white/20"
             >
               {skill}
             </span>
