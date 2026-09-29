@@ -1,20 +1,30 @@
-<div align="center">
-<img width="1200" height="475" alt="GHBanner" src="https://github.com/user-attachments/assets/0aa67016-6eaf-458a-adb2-6e31a0763ed6" />
-</div>
+# Umair Ahsan — Portfolio
 
-# Run and deploy your AI Studio app
-
-This contains everything you need to run your app locally.
-
-View your app in AI Studio: https://ai.studio/apps/drive/1wIINbfqJRiSCBQ9dDjh39Mv8wDc3iIUz
+Personal portfolio site: React 19 + TypeScript + Vite + Tailwind CSS + Framer Motion + Lenis.
 
 ## Run Locally
 
-**Prerequisites:**  Node.js
-
+**Prerequisites:** Node.js 18+
 
 1. Install dependencies:
    `npm install`
-2. Set the `GEMINI_API_KEY` in [.env.local](.env.local) to your Gemini API key
-3. Run the app:
+2. Start the dev server:
    `npm run dev`
+3. Production build:
+   `npm run build`
+
+## Structure
+
+- `lib/motion-tokens.ts` — central motion tokens (durations, easings, springs, variants). No hardcoded animation values elsewhere.
+- `styles/index.css` — Tailwind entry + design tokens (`--color-*` variables, dark mode overrides).
+- `components/ui/` — shared primitives (`Section`, `StaggerGroup`/`StaggerItem`, `Cursor`, `Magnetic`).
+- `scripts/optimize-images.mjs` — converts project screenshots in `public/projects` to WebP:
+  `npm run optimize-images` (keep `.webp` filenames in sync with `components/Projects.tsx`).
+- `scripts/qa.mjs` — visual + functional QA (screenshots, console errors, anchors, theme, scrollspy).
+  First run: `npx playwright install chromium`, then start `npm run preview` and run `npm run qa`.
+  Screenshots land in `qa-screenshots/` (gitignored).
+
+## Checks
+
+- `npm run typecheck` — strict TypeScript
+- `npm run build` — production build
