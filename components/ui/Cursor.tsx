@@ -1,45 +1,88 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import { motion, useMotionValue, useSpring } from 'framer-motion';
+import { springs } from '../../lib/motion-tokens';
 
+const HOVERABLE = 'a, button, [role="button"], input, textarea, select';
+
+const useFinePointer = () => {
+  const [fine, setFine] = useState(false);
+  useEffect(() => {
+    const mq = window.matchMedia('(hover: hover) and (pointer: fine)');
+    const update = () => setFine(mq.matches);
+    update();
+    mq.addEventListener('change', update);
+    return () => mq.removeEventListener('change', update);
+  }, []);
+  return fine;
+};
+
+/**
+ * Custom cursor: 1:1 dot + fast trailing ring (desktop, fine-pointer only).
+ * The dot is bound directly to the pointer motion values (zero lag), the ring
+ * follows through a stiff, critically-damped spring for a smooth trail.
+ * Native cursor stays visible for accessibility.
+ */
 export const Cursor: React.FC = () => {
-  const cursorX = useMotionValue(-100);
-  const cursorY = useMotionValue(-100);
-  const [isVisible, setIsVisible] = useState(false);
-  
-  // Reduced stiffness for a slower, smoother follow effect
-  const springConfig = { damping: 20, stiffness: 150 };
-  const cursorXSpring = useSpring(cursorX, springConfig);
-  const cursorYSpring = useSpring(cursorY, springConfig);
+  const finePointer = useFinePointer();
+  const x = useMotionValue(-100);
+  const y = useMotionValue(-100);
+  const [visible, setVisible] = useState(false);
+  const visibleRef = useRef(false);
+  const [hovering, setHovering] = useState(false);
+
+  const ringX = useSpring(x, springs.track);
+  const ringY = useSpring(y, springs.track);
 
   useEffect(() => {
-    const moveCursor = (e: MouseEvent) => {
-      cursorX.set(e.clientX - 6); // Center the 12px dot
-      cursorY.set(e.clientY - 6);
-      if (!isVisible) setIsVisible(true);
+    if (!finePointer) return;
+
+    const move = (e: PointerEvent) => {
+      x.set(e.clientX);
+      y.set(e.clientY);
+      /* Only dispatch once per visibility change — keeps the hot path allocation-free */
+      if (!visibleRef.current) {
+        visibleRef.current = true;
+        setVisible(true);
+      }
+    };
+    const onOver = (e: PointerEvent) => {
+      const target = e.target as Element | null;
+      setHovering(!!target?.closest?.(HOVERABLE));
+    };
+    const leave = () => {
+      visibleRef.current = false;
+      setVisible(false);
     };
 
-    const handleMouseEnter = () => setIsVisible(true);
-    const handleMouseLeave = () => setIsVisible(false);
-
-    window.addEventListener('mousemove', moveCursor);
-    document.body.addEventListener('mouseenter', handleMouseEnter);
-    document.body.addEventListener('mouseleave', handleMouseLeave);
+    window.addEventListener('pointermove', move, { passive: true });
+    window.addEventListener('pointerover', onOver, { passive: true });
+    document.documentElement.addEventListener('pointerleave', leave);
 
     return () => {
-      window.removeEventListener('mousemove', moveCursor);
-      document.body.removeEventListener('mouseenter', handleMouseEnter);
-      document.body.removeEventListener('mouseleave', handleMouseLeave);
+      window.removeEventListener('pointermove', move);
+      window.removeEventListener('pointerover', onOver);
+      document.documentElement.removeEventListener('pointerleave', leave);
     };
-  }, [cursorX, cursorY, isVisible]);
+  }, [finePointer, x, y]);
+
+  if (!finePointer) return null;
 
   return (
-    <motion.div 
-      className="fixed top-0 left-0 w-3 h-3 bg-white rounded-full pointer-events-none z-[9999] mix-blend-difference"
-      style={{
-        translateX: cursorXSpring,
-        translateY: cursorYSpring,
-        opacity: isVisible ? 1 : 0,
-      }}
-    />
+    <>
+      {/* Dot — exactly on the pointer */}
+      <motion.div
+        className="fixed top-0 left-0 w-2 h-2 -ml-1 -mt-1 bg-blue-500 rounded-full pointer-events-none z-[9999]"
+        style={{ x, y, opacity: visible ? 1 : 0, willChange: 'transform' }}
+        aria-hidden="true"
+      />
+      {/* Ring — trails with a fast spring */}
+      <motion.div
+        className="fixed top-0 left-0 w-8 h-8 -ml-4 -mt-4 border border-blue-500/50 rounded-full pointer-events-none z-[9998]"
+        style={{ x: ringX, y: ringY, opacity: visible ? 1 : 0, willChange: 'transform' }}
+        animate={{ scale: hovering ? 1.6 : 1 }}
+        transition={springs.snappy}
+        aria-hidden="true"
+      />
+    </>
   );
 };

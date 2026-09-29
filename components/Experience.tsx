@@ -1,8 +1,9 @@
 import React from 'react';
-import { motion } from 'framer-motion';
+import { motion, type Variants } from 'framer-motion';
 import { Section, SectionTitle } from './ui/Section';
 import { Experience as ExperienceType } from '../types';
 import { Briefcase, Calendar, CheckCircle2 } from 'lucide-react';
+import { motionTokens, fadeSideItem } from '../lib/motion-tokens';
 
 const experiences: ExperienceType[] = [
   {
@@ -35,6 +36,21 @@ const experiences: ExperienceType[] = [
   }
 ];
 
+/** Job card reveal — also orchestrates the achievement list stagger inside it. */
+const experienceItemVariants: Variants = {
+  hidden: { opacity: 0, x: -motionTokens.distance.lg },
+  visible: {
+    opacity: 1,
+    x: 0,
+    transition: {
+      duration: motionTokens.duration.slow,
+      ease: motionTokens.easing.smooth,
+      staggerChildren: motionTokens.stagger.fast,
+      delayChildren: motionTokens.duration.fast,
+    },
+  },
+};
+
 export const Experience: React.FC = () => {
   return (
     <Section id="experience" className="py-12 md:py-16">
@@ -45,13 +61,13 @@ export const Experience: React.FC = () => {
         <div className="absolute left-4 md:left-8 top-0 bottom-0 w-px bg-gradient-to-b from-blue-500 via-gray-200 dark:via-gray-800 to-transparent"></div>
 
         <div className="space-y-12">
-          {experiences.map((exp, index) => (
+          {experiences.map((exp) => (
             <motion.div
               key={exp.id}
-              initial={{ opacity: 0, x: -20 }}
-              whileInView={{ opacity: 1, x: 0 }}
-              viewport={{ once: true, margin: "-50px" }}
-              transition={{ delay: index * 0.2 }}
+              initial="hidden"
+              whileInView="visible"
+              viewport={{ once: true, margin: '-50px' }}
+              variants={experienceItemVariants}
               className="relative pl-12 md:pl-24"
             >
               {/* Timeline Dot */}
@@ -63,12 +79,12 @@ export const Experience: React.FC = () => {
                   <div>
                     <h3 className="text-2xl font-bold text-gray-900 dark:text-white mb-1">{exp.company}</h3>
                     <div className="flex items-center gap-2 text-blue-600 dark:text-blue-400 font-mono text-sm mb-2">
-                      <Briefcase className="w-4 h-4" />
+                      <Briefcase className="w-4 h-4" aria-hidden="true" />
                       <span>{exp.role}</span>
                     </div>
                   </div>
                   <div className="flex items-center gap-2 px-3 py-1 rounded-full bg-gray-100 dark:bg-white/5 border border-gray-400 dark:border-white/5 w-fit">
-                    <Calendar className="w-3 h-3 text-gray-500" />
+                    <Calendar className="w-3 h-3 text-gray-500" aria-hidden="true" />
                     <span className="text-xs font-mono font-medium text-gray-600 dark:text-gray-300">{exp.period}</span>
                   </div>
                 </div>
@@ -76,16 +92,13 @@ export const Experience: React.FC = () => {
                 <div className="mb-6">
                   <div className="text-sm text-gray-500 font-mono mb-3 uppercase tracking-wider">Achievements</div>
                   <ul className="grid grid-cols-1 gap-3">
-                    {exp.achievements.map((item, i) => (
-                      <motion.li 
-                        key={i}
-                        initial={{ opacity: 0, x: -10 }}
-                        whileInView={{ opacity: 1, x: 0 }}
-                        viewport={{ once: true }}
-                        transition={{ delay: 0.3 + (i * 0.1) }}
+                    {exp.achievements.map((item) => (
+                      <motion.li
+                        key={item}
+                        variants={fadeSideItem}
                         className="flex items-start gap-3 text-gray-600 dark:text-gray-300 text-sm leading-relaxed"
                       >
-                        <CheckCircle2 className="w-4 h-4 text-green-500 mt-0.5 flex-shrink-0" />
+                        <CheckCircle2 className="w-4 h-4 text-green-500 mt-0.5 flex-shrink-0" aria-hidden="true" />
                         <span>{item}</span>
                       </motion.li>
                     ))}
@@ -93,7 +106,7 @@ export const Experience: React.FC = () => {
                 </div>
 
                 <div className="pt-6 border-t border-gray-300 dark:border-white/5">
-                  <div className="text-xs text-gray-400 font-mono mb-2">TECH STACK</div>
+                  <div className="text-xs text-gray-500 dark:text-gray-400 font-mono mb-2">TECH STACK</div>
                   <div className="flex flex-wrap gap-2">
                     {exp.stack.split(', ').map((tech) => (
                       <span key={tech} className="px-2 py-1 bg-gray-50 dark:bg-white/5 rounded text-xs text-gray-600 dark:text-gray-400 border border-gray-400 dark:border-white/5">

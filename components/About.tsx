@@ -1,6 +1,16 @@
 import React from 'react';
 import { motion } from 'framer-motion';
 import { Section, SectionTitle } from './ui/Section';
+import { motionTokens, fadeUpItem } from '../lib/motion-tokens';
+
+const imageReveal = {
+  hidden: { opacity: 0, scale: motionTokens.scale.subtle },
+  visible: {
+    opacity: 1,
+    scale: 1,
+    transition: { duration: motionTokens.duration.slow, ease: motionTokens.easing.smooth },
+  },
+} as const;
 
 export const About: React.FC = () => {
   return (
@@ -8,13 +18,13 @@ export const About: React.FC = () => {
       <SectionTitle subtitle="About me">Who I Am</SectionTitle>
 
       <div className="grid grid-cols-1 md:grid-cols-2 gap-8 lg:gap-12 items-start relative">
-        <motion.div 
-          initial={{ opacity: 0, x: -30 }}
-          whileInView={{ opacity: 1, x: 0 }}
+        <motion.div
+          initial="hidden"
+          whileInView="visible"
           viewport={{ once: true }}
-          transition={{ duration: 0.6 }}
+          variants={fadeUpItem}
         >
-           <h3 className="text-xl md:text-2xl lg:text-3xl font-light leading-snug mb-4 md:mb-6 text-gray-800 dark:text-gray-100 transition-colors duration-500">
+          <h3 className="text-xl md:text-2xl lg:text-3xl font-light leading-snug mb-4 md:mb-6 text-gray-800 dark:text-gray-100 transition-colors duration-500">
             Hello! I'm Umair. I'm a <span className="font-bold text-black dark:text-white">Full-Stack Developer</span> building enterprise platforms and AI automation systems.
           </h3>
           <p className="text-gray-600 dark:text-gray-400 leading-relaxed mb-6 transition-colors duration-500">
@@ -31,50 +41,58 @@ export const About: React.FC = () => {
 
         {/* Mobile image - below text, no negative margins */}
         <div className="md:hidden mt-0">
-          <motion.div 
+          <motion.div
             className="relative max-h-[300px] max-w-[280px] mx-auto"
-            initial={{ opacity: 0, scale: 0.95 }}
-            whileInView={{ opacity: 1, scale: 1 }}
+            initial="hidden"
+            whileInView="visible"
             viewport={{ once: true }}
-            transition={{ duration: 0.6 }}
+            variants={imageReveal}
           >
             <div className="relative z-10 rounded-2xl overflow-hidden grayscale hover:grayscale-0 transition-[filter] duration-500 shadow-xl aspect-[3/4]">
-              <img 
-                src="/projects/umair.jpg" 
-                alt="Umair Ahsan" 
+              <img
+                src="/projects/umair.jpg"
+                alt="Umair Ahsan"
+                width={280}
+                height={373}
+                loading="lazy"
+                decoding="async"
                 className="w-full h-full object-cover object-top"
               />
-              
+
               {/* Overlay Gradient */}
-              <div className="absolute inset-0 bg-gradient-to-t from-gray-900/60 dark:from-[var(--color-bg)] via-transparent to-transparent opacity-60"></div>
+              <div className="absolute inset-0 bg-gradient-to-t from-gray-900/60 dark:from-[var(--color-bg)] via-transparent to-transparent opacity-60" aria-hidden="true"></div>
             </div>
-            
+
             {/* Decorative Backdrops */}
-            <div className="absolute -top-4 -right-4 w-full h-full border border-gray-400 dark:border-gray-800 rounded-2xl -z-10 transition-colors duration-500"></div>
+            <div className="absolute -top-4 -right-4 w-full h-full border border-gray-400 dark:border-gray-800 rounded-2xl -z-10 transition-colors duration-500" aria-hidden="true"></div>
           </motion.div>
         </div>
 
         {/* Desktop image */}
-        <motion.div 
+        <motion.div
           className="hidden md:block relative w-full max-w-[320px] lg:max-w-[360px] justify-self-end md:-mt-36 lg:-mt-40"
-          initial={{ opacity: 0, scale: 0.95 }}
-          whileInView={{ opacity: 1, scale: 1 }}
+          initial="hidden"
+          whileInView="visible"
           viewport={{ once: true }}
-          transition={{ duration: 0.6 }}
+          variants={imageReveal}
         >
           <div className="relative z-10 rounded-2xl overflow-hidden grayscale hover:grayscale-0 transition-[filter] duration-500 shadow-xl aspect-[3/4]">
-            <img 
-              src="/projects/umair.jpg" 
-              alt="Umair Ahsan" 
+            <img
+              src="/projects/umair.jpg"
+              alt="Umair Ahsan"
+              width={360}
+              height={480}
+              loading="lazy"
+              decoding="async"
               className="w-full h-full object-cover object-top"
             />
-            
+
             {/* Overlay Gradient */}
-            <div className="absolute inset-0 bg-gradient-to-t from-gray-900/60 dark:from-[var(--color-bg)] via-transparent to-transparent opacity-60"></div>
+            <div className="absolute inset-0 bg-gradient-to-t from-gray-900/60 dark:from-[var(--color-bg)] via-transparent to-transparent opacity-60" aria-hidden="true"></div>
           </div>
-          
+
           {/* Decorative Backdrops */}
-          <div className="absolute -top-4 -right-4 w-full h-full border border-gray-400 dark:border-gray-800 rounded-2xl -z-10 transition-colors duration-500"></div>
+          <div className="absolute -top-4 -right-4 w-full h-full border border-gray-400 dark:border-gray-800 rounded-2xl -z-10 transition-colors duration-500" aria-hidden="true"></div>
         </motion.div>
       </div>
     </Section>

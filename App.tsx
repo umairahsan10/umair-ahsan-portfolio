@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import { useEffect } from "react";
 import Lenis from "lenis";
 import { MotionConfig } from "framer-motion";
 import { Navbar } from "./components/Navbar";
@@ -9,38 +9,51 @@ import { Experience } from "./components/Experience";
 import { Projects } from "./components/Projects";
 import { Footer } from "./components/Footer";
 import { ThemeProvider } from "./context/ThemeContext";
+import { Cursor } from "./components/ui/Cursor";
 
 function AppContent() {
   useEffect(() => {
-    const reducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)");
-    if (reducedMotion.matches) return;
+    const mq = window.matchMedia("(prefers-reduced-motion: reduce)");
+    let lenis: Lenis | null = null;
 
-    const lenis = new Lenis({
-      duration: 1.2,
-      easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
-      orientation: "vertical",
-      gestureOrientation: "vertical",
-      smoothWheel: true,
-      wheelMultiplier: 1,
-      touchMultiplier: 2,
-    });
+    const setup = () => {
+      if (mq.matches) {
+        lenis?.destroy();
+        lenis = null;
+        return;
+      }
+      if (lenis) return;
+      lenis = new Lenis({
+        duration: 1.2,
+        easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
+        orientation: "vertical",
+        gestureOrientation: "vertical",
+        smoothWheel: true,
+        wheelMultiplier: 1,
+        touchMultiplier: 2,
+        autoRaf: true,
+        anchors: { offset: -100 },
+      });
+    };
 
-    function raf(time: number) {
-      lenis.raf(time);
-      requestAnimationFrame(raf);
-    }
-
-    requestAnimationFrame(raf);
+    setup();
+    mq.addEventListener("change", setup);
 
     return () => {
-      lenis.destroy();
+      mq.removeEventListener("change", setup);
+      lenis?.destroy();
+      lenis = null;
     };
   }, []);
 
   return (
-    <div className="bg-[var(--color-bg)] min-h-screen text-gray-900 dark:text-white selection:bg-blue-500/30 transition-colors duration-500">
+    <div className="bg-[var(--color-bg)] min-h-screen text-gray-900 dark:text-white transition-colors duration-500">
+      <a href="#main" className="skip-link">
+        Skip to content
+      </a>
+      <Cursor />
       <Navbar />
-      <main>
+      <main id="main" tabIndex={-1}>
         <Hero />
         <About />
         <Skills />
