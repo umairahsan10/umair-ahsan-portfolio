@@ -199,7 +199,7 @@ export const Hero: React.FC = () => {
               variants={fadeItem}
               className="font-mono text-sm md:text-base text-[var(--color-accent)] tracking-wider uppercase mb-6"
             >
-              Full-Stack Engineer
+              Backend &amp; AI-Integrated Apps Engineer
             </motion.p>
 
             <motion.p

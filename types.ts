@@ -7,6 +7,15 @@ export interface Project {
   tech: string[];
   image: string;
   link: string;
+  /** Public source repo. Omit until the repo is public — the button only renders when set. */
+  repo?: string;
+  /** Short case study. Each field renders only when present; never invent numbers. */
+  caseStudy?: {
+    problem: string;
+    role?: string;
+    stack?: string;
+    result?: string;
+  };
 }
 
 export interface Experience {

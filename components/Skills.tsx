@@ -7,14 +7,14 @@ import { motionTokens } from '../lib/motion-tokens';
 
 const skills: SkillCategory[] = [
   {
+    title: 'Backend Engineering',
+    icon: Server,
+    skills: ['Java', 'Spring Boot', 'Redis', 'Nest.js', 'Node.js', 'PostgreSQL', 'Prisma', 'Supabase', 'REST APIs', 'Auth & RBAC', 'MongoDB', 'MySQL']
+  },
+  {
     title: 'Automation & AI',
     icon: Workflow,
     skills: ['Workflow Automation', 'Web Scraping', 'OpenAI Integrations', 'Data Processing', 'Bot Development']
-  },
-  {
-    title: 'Backend Engineering',
-    icon: Server,
-    skills: ['Nest.js', 'Node.js', 'PostgreSQL', 'Prisma', 'Supabase', 'REST APIs', 'Auth & RBAC', 'MongoDB', 'MySQL']
   },
   {
     title: 'Frontend Ecosystem',

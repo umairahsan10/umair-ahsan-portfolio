@@ -25,10 +25,10 @@ export const About: React.FC = () => {
           variants={fadeUpItem}
         >
           <h3 className="font-display text-xl md:text-2xl lg:text-3xl font-normal leading-snug mb-4 md:mb-6 text-gray-800 dark:text-gray-100 theme-transition">
-            Hello! I'm Umair. I'm a <span className="font-bold text-black dark:text-white">Full-Stack Developer</span> building enterprise platforms and AI automation systems.
+            Hello! I'm Umair. I'm a <span className="font-bold text-black dark:text-white">Backend &amp; AI-Integrated Apps Engineer</span> building scalable APIs, enterprise platforms, and LLM-powered products.
           </h3>
           <p className="text-gray-600 dark:text-gray-400 leading-relaxed mb-6 transition-colors duration-500">
-            I specialize in crafting robust, scalable, and high-performance web applications using Next.js, Nest.js, React, PostgreSQL, and TypeScript.
+            I specialize in crafting robust, scalable, and high-performance web applications using Java/Spring Boot, Nest.js, PostgreSQL, Redis, and TypeScript, with Next.js and React on the front end.
           </p>
           <p className="text-gray-600 dark:text-gray-400 leading-relaxed mb-6 transition-colors duration-500">
             My strengths include designing clean architectures, developing efficient APIs, implementing authentication/RBAC, building UI/UX with smooth animations, and delivering production-ready, maintainable code.

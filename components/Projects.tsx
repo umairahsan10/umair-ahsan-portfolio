@@ -1,6 +1,6 @@
 import React, { useRef } from 'react';
 import { motion, useMotionValue, useSpring, useTransform } from 'framer-motion';
-import { ArrowUpRight } from 'lucide-react';
+import { ArrowUpRight, Github } from 'lucide-react';
 import { Section, SectionTitle } from './ui/Section';
 import { Project } from '../types';
 import { springs, fadeUpItem } from '../lib/motion-tokens';
@@ -27,6 +27,12 @@ const projectGroups: {
         tech: ['Next.js', 'Nest.js', 'PostgreSQL', 'OpenAI API', 'RBAC', 'Automation'],
         image: 'projects/FYP.webp',
         link: 'https://insure-link-henna.vercel.app/',
+        // TODO: add `repo` (public GitHub URL), `role`, and a defensible `result`.
+        caseStudy: {
+          problem:
+            'Hospitals, insurers, corporates, and patients ran claims and eligibility checks through disconnected, manual processes.',
+          stack: 'Nest.js API, PostgreSQL, role-based access per party, OpenAI API for the policy/claim chatbot.',
+        },
       },
       {
         id: 1,
@@ -36,6 +42,13 @@ const projectGroups: {
         tech: ['Next.js', 'Nest.js', 'PostgreSQL', 'Prisma', 'Supabase'],
         image: 'projects/crm.webp',
         link: 'https://crm-frontend-eight-gamma.vercel.app/',
+        // TODO: add `repo`, and a defensible `result`.
+        caseStudy: {
+          problem:
+            'Multiple departments needed one system for customer workflows, internal chat, and reporting instead of separate tools.',
+          role: 'Full-stack developer at BytesPak.',
+          stack: 'Nest.js + Prisma on PostgreSQL (Supabase), Next.js front end, real-time chat.',
+        },
       },
       {
         id: 4,
@@ -60,12 +73,19 @@ const projectGroups: {
         tech: ['Next.js', 'OpenAI APIs', 'Voice Input', 'Image Recognition', 'Tailwind CSS'],
         image: 'projects/intellimaint.webp',
         link: 'https://intellimaint-ai.vercel.app/',
+        // TODO: add `repo`, and a defensible `result`.
+        caseStudy: {
+          problem:
+            'Maintenance technicians lose time hunting through manuals to diagnose faults on the shop floor.',
+          role: 'Full-stack developer at BytesPak.',
+          stack: 'Next.js, OpenAI APIs for image and voice input, generating step-by-step troubleshooting guides.',
+        },
       },
       {
         id: 3,
         title: 'Email Automation System',
         description:
-          'Scrapes websites → detects problems → generates personalized emails → sends at scale (50k–90k emails). Includes tracking and follow-up automation.',
+          'Client-built outreach pipeline: a Node.js backend that queues, personalizes (OpenAI), and sends email campaigns, with delivery tracking and follow-up automation.',
         tech: ['Next.js', 'Node.js', 'OpenAI APIs', 'Automation'],
         image: 'projects/email-automation.webp',
         link: 'http://email-frontend-bytes.vercel.app/',
@@ -215,10 +235,32 @@ export const Projects: React.FC = () => {
                       ))}
                     </div>
 
-                    <p className="text-gray-600 dark:text-gray-400 mb-8 leading-relaxed theme-transition">
+                    <p className="text-gray-600 dark:text-gray-400 mb-6 leading-relaxed theme-transition">
                       {project.description}
                     </p>
 
+                    {project.caseStudy && (
+                      <dl className="mb-8 space-y-3 border-l-2 border-[var(--color-border)] pl-4 text-sm leading-relaxed">
+                        {(
+                          [
+                            ['Problem', project.caseStudy.problem],
+                            ['Role', project.caseStudy.role],
+                            ['Stack', project.caseStudy.stack],
+                            ['Result', project.caseStudy.result],
+                          ] as const
+                        ).map(
+                          ([label, value]) =>
+                            value && (
+                              <div key={label}>
+                                <dt className="font-mono text-xs uppercase tracking-wider text-gray-500">{label}</dt>
+                                <dd className="text-gray-600 dark:text-gray-400">{value}</dd>
+                              </div>
+                            ),
+                        )}
+                      </dl>
+                    )}
+
+<div className="flex flex-wrap items-center gap-3">
                     <a
                       href={project.link}
                       target="_blank"
@@ -231,6 +273,18 @@ export const Projects: React.FC = () => {
                         aria-hidden="true"
                       />
                     </a>
+                    {project.repo && (
+                      <a
+                        href={project.repo}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="inline-flex items-center gap-2 px-6 py-3 rounded-full border border-[var(--color-border)] text-gray-900 dark:text-white font-medium hover:border-[var(--color-border-hover)] active:scale-[0.97] transition-[border-color,transform] duration-150 ease-out cursor-pointer"
+                      >
+                        <Github className="w-4 h-4" aria-hidden="true" />
+                        Source
+                      </a>
+                    )}
+                    </div>
                   </div>
                 </motion.div>
               ))}
