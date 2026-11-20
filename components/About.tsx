@@ -24,7 +24,7 @@ export const About: React.FC = () => {
           viewport={{ once: true }}
           variants={fadeUpItem}
         >
-          <h3 className="text-xl md:text-2xl lg:text-3xl font-light leading-snug mb-4 md:mb-6 text-gray-800 dark:text-gray-100 transition-colors duration-500">
+          <h3 className="font-display text-xl md:text-2xl lg:text-3xl font-normal leading-snug mb-4 md:mb-6 text-gray-800 dark:text-gray-100 theme-transition">
             Hello! I'm Umair. I'm a <span className="font-bold text-black dark:text-white">Full-Stack Developer</span> building enterprise platforms and AI automation systems.
           </h3>
           <p className="text-gray-600 dark:text-gray-400 leading-relaxed mb-6 transition-colors duration-500">
@@ -34,8 +34,8 @@ export const About: React.FC = () => {
             My strengths include designing clean architectures, developing efficient APIs, implementing authentication/RBAC, building UI/UX with smooth animations, and delivering production-ready, maintainable code.
           </p>
           <div className="flex gap-4 font-mono text-sm">
-            <span className="px-3 py-1 rounded-full border border-gray-300 dark:border-gray-700 text-gray-600 dark:text-gray-300 transition-colors duration-500">Remote</span>
-            <span className="px-3 py-1 rounded-full border border-gray-300 dark:border-gray-700 text-gray-600 dark:text-gray-300 transition-colors duration-500">Relocation Available</span>
+            <span className="px-3 py-1 rounded-full border border-[var(--color-border)] text-gray-600 dark:text-gray-300 theme-transition">Remote</span>
+            <span className="px-3 py-1 rounded-full border border-[var(--color-border)] text-gray-600 dark:text-gray-300 theme-transition">Relocation Available</span>
           </div>
         </motion.div>
 
@@ -48,9 +48,9 @@ export const About: React.FC = () => {
             viewport={{ once: true }}
             variants={imageReveal}
           >
-            <div className="relative z-10 rounded-2xl overflow-hidden grayscale hover:grayscale-0 transition-[filter] duration-500 shadow-xl aspect-[3/4]">
+            <div className="relative z-10 rounded-2xl overflow-hidden shadow-xl aspect-[3/4]">
               <img
-                src="/projects/umair.jpg"
+                src="/projects/umair.webp"
                 alt="Umair Ahsan"
                 width={280}
                 height={373}
@@ -60,11 +60,11 @@ export const About: React.FC = () => {
               />
 
               {/* Overlay Gradient */}
-              <div className="absolute inset-0 bg-gradient-to-t from-gray-900/60 dark:from-[var(--color-bg)] via-transparent to-transparent opacity-60" aria-hidden="true"></div>
+              <div className="absolute inset-0 bg-gradient-to-t from-gray-900/40 dark:from-[var(--color-bg)] via-transparent to-transparent opacity-50" aria-hidden="true"></div>
             </div>
 
             {/* Decorative Backdrops */}
-            <div className="absolute -top-4 -right-4 w-full h-full border border-gray-400 dark:border-gray-800 rounded-2xl -z-10 transition-colors duration-500" aria-hidden="true"></div>
+            <div className="absolute -top-4 -right-4 w-full h-full border border-[var(--color-border)] rounded-2xl -z-10 theme-transition" aria-hidden="true"></div>
           </motion.div>
         </div>
 
@@ -78,7 +78,7 @@ export const About: React.FC = () => {
         >
           <div className="relative z-10 rounded-2xl overflow-hidden grayscale hover:grayscale-0 transition-[filter] duration-500 shadow-xl aspect-[3/4]">
             <img
-              src="/projects/umair.jpg"
+              src="/projects/umair.webp"
               alt="Umair Ahsan"
               width={360}
               height={480}

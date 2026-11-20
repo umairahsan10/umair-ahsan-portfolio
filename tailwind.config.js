@@ -7,6 +7,7 @@ export default {
       fontFamily: {
         sans: ['Open Sans', 'sans-serif'],
         mono: ['Fira Code', 'monospace'],
+        display: ['Space Grotesk', 'Open Sans', 'sans-serif'],
       },
     },
   },

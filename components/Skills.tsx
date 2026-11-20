@@ -1,11 +1,10 @@
 import React from 'react';
 import { motion } from 'framer-motion';
-import { Layout, Server, Terminal, Workflow, Code2 } from 'lucide-react';
+import { Layout, Server, Terminal, Workflow } from 'lucide-react';
 import { Section, SectionTitle, StaggerGroup, StaggerItem } from './ui/Section';
 import { SkillCategory } from '../types';
-import { motionTokens, springs } from '../lib/motion-tokens';
+import { motionTokens } from '../lib/motion-tokens';
 
-// Enhanced skills data matching Umair's profile
 const skills: SkillCategory[] = [
   {
     title: 'Automation & AI',
@@ -29,6 +28,8 @@ const skills: SkillCategory[] = [
   },
 ];
 
+const totalSkills = skills.reduce((count, category) => count + category.skills.length, 0);
+
 export const Skills: React.FC = () => {
   return (
     <Section id="skills" className="pt-20 pb-12 md:py-16">
@@ -42,16 +43,16 @@ export const Skills: React.FC = () => {
         ))}
       </StaggerGroup>
 
-      {/* Decorative "System Status" text */}
+      {/* Real counts, derived from the data above — replaces the old fake terminal chrome */}
       <motion.div
         initial={{ opacity: 0 }}
         whileInView={{ opacity: 1 }}
         viewport={{ once: true }}
         transition={{ duration: motionTokens.duration.normal }}
-        className="mt-12 flex justify-between items-center text-xs font-mono text-gray-500 dark:text-gray-400 border-t border-black/5 dark:border-white/5 pt-6 transition-colors duration-500"
+        className="mt-12 flex justify-between items-center text-xs font-mono text-gray-500 border-t border-[var(--color-border)] pt-6 theme-transition"
       >
-        <span>SYSTEM_STATUS: ONLINE</span>
-        <span>ALL SYSTEMS OPERATIONAL</span>
+        <span>{skills.length} categories</span>
+        <span>{totalSkills} technologies</span>
       </motion.div>
     </Section>
   );
@@ -59,44 +60,37 @@ export const Skills: React.FC = () => {
 
 const SkillCard: React.FC<{ category: SkillCategory }> = ({ category }) => {
   return (
-    <motion.div
-      whileHover={{ scale: motionTokens.scale.pop }}
-      transition={springs.snappy}
-      className="group relative overflow-hidden rounded-3xl bg-white dark:bg-[var(--color-card)] border border-gray-400 dark:border-white/5 p-8 transition-colors duration-500 hover:border-gray-500 dark:hover:border-white/20 shadow-sm hover:shadow-lg dark:shadow-none h-full"
-    >
-      {/* Hover Gradient Effect */}
+    <div className="surface group relative overflow-hidden p-8 hover:shadow-lg h-full">
+      {/* Accent wash on hover — kept very low so it reads as depth, not decoration */}
       <div
-        className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none"
+        className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-150 pointer-events-none"
         style={{
-          background: 'radial-gradient(circle at center, rgba(59, 130, 246, 0.08) 0%, transparent 70%)'
+          background: 'radial-gradient(circle at center, var(--color-accent-wash) 0%, transparent 70%)',
         }}
         aria-hidden="true"
       />
 
       <div className="relative z-10">
         <div className="flex items-center gap-4 mb-8">
-          <div className="w-12 h-12 rounded-2xl flex items-center justify-center transition-colors duration-300 bg-gray-100 dark:bg-white/5 text-gray-600 dark:text-gray-400 group-hover:bg-blue-500 group-hover:text-white">
+          <div className="w-12 h-12 rounded-2xl flex items-center justify-center transition-colors duration-150 bg-[var(--color-chip)] text-gray-600 dark:text-gray-400 group-hover:bg-[var(--color-accent)] group-hover:text-white">
             <category.icon className="w-6 h-6" aria-hidden="true" />
           </div>
-          <h3 className="text-xl font-bold tracking-tight text-gray-900 dark:text-gray-100 transition-colors duration-500">{category.title}</h3>
+          <h3 className="font-display text-lg md:text-xl font-bold tracking-tight text-gray-900 dark:text-gray-100">
+            {category.title}
+          </h3>
         </div>
 
         <div className="flex flex-wrap gap-2">
           {category.skills.map((skill) => (
             <span
               key={skill}
-              className="px-3 py-1.5 text-sm font-mono rounded-lg bg-gray-50 dark:bg-white/5 text-gray-600 dark:text-gray-400 border border-gray-400 dark:border-white/5 transition-colors duration-300 group-hover:bg-gray-100 dark:group-hover:bg-white/10 group-hover:text-gray-900 dark:group-hover:text-gray-200 hover:!bg-gray-200 dark:hover:!bg-white/20 hover:!border-gray-500 dark:hover:!border-white/20"
+              className="px-3 py-1.5 text-sm font-mono rounded-lg bg-[var(--color-chip)] text-gray-600 dark:text-gray-400 border border-[var(--color-border)] hover:border-[var(--color-border-hover)] hover:text-gray-900 dark:hover:text-gray-200 transition-[color,border-color] duration-150 ease-out theme-transition"
             >
               {skill}
             </span>
           ))}
         </div>
       </div>
-
-      {/* Decorative Corner Lines */}
-      <div className="absolute top-0 right-0 p-4 opacity-10 dark:opacity-20 group-hover:opacity-20 dark:group-hover:opacity-40 transition-opacity" aria-hidden="true">
-        <Code2 className="w-16 h-16 text-black dark:text-white stroke-[0.5]" />
-      </div>
-    </motion.div>
+    </div>
   );
 };

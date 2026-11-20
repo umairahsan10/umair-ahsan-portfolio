@@ -12,6 +12,18 @@
   --color-chip: #f3f4f6;
   --color-pill: rgba(255, 255, 255, 0.8);
   --color-accent: #2563eb;
+  --color-success: #15803d;
+
+  /* Very low-alpha accent, for hover washes and glows */
+  --color-accent-wash: rgba(37, 99, 235, 0.07);
+
+  /* Borders — one neutral scale that inverts cleanly between themes */
+  --color-border: rgba(0, 0, 0, 0.1);
+  --color-border-hover: rgba(0, 0, 0, 0.2);
+
+  /* Motion — fast for interaction states, slow only for the theme flip */
+  --dur-fast: 150ms;
+  --dur-theme: 500ms;
 }
 .dark {
   --color-bg: #121212;
@@ -22,6 +34,12 @@
   --color-chip: #252525;
   --color-pill: rgba(18, 18, 18, 0.8);
   --color-accent: #60a5fa;
+  --color-success: #4ade80;
+
+  --color-accent-wash: rgba(96, 165, 250, 0.1);
+
+  --color-border: rgba(255, 255, 255, 0.1);
+  --color-border-hover: rgba(255, 255, 255, 0.22);
 }
 
 html {
@@ -35,10 +53,54 @@ body {
   transition-duration: 500ms;
 }
 
-/* Balanced wrapping for headings */
-h1,
-h2 {
-  text-wrap: balance;
+@layer base {
+  /* Balanced wrapping for headings */
+  h1,
+  h2,
+  h3 {
+    text-wrap: balance;
+  }
+
+  p,
+  li {
+    text-wrap: pretty;
+  }
+
+  /* Images need a neutral inset outline so their edges don't blur into the
+     surface behind them. Never tint this with the brand palette. */
+  img {
+    outline: 1px solid rgba(0, 0, 0, 0.1);
+    outline-offset: -1px;
+  }
+
+  .dark img {
+    outline-color: rgba(255, 255, 255, 0.1);
+  }
+}
+
+@layer components {
+  /* Card surface — one border weight and one radius across the whole site,
+     so light and dark stop disagreeing about how heavy a card edge is.
+     Lives in the components layer so utilities (rounded-full, etc.) still win. */
+  .surface {
+    background-color: var(--color-card);
+    border: 1px solid var(--color-border);
+    border-radius: 1rem;
+    transition-property: border-color, background-color, box-shadow;
+    transition-duration: var(--dur-fast);
+    transition-timing-function: ease-out;
+  }
+
+  .surface:hover {
+    border-color: var(--color-border-hover);
+  }
+
+  /* Theme flip only. Interaction states use --dur-fast (150ms), not this. */
+  .theme-transition {
+    transition-property: color, background-color, border-color, fill, stroke;
+    transition-duration: var(--dur-theme);
+    transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+  }
 }
 
 /* Visible keyboard focus */

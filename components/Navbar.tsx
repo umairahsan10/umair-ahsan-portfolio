@@ -58,7 +58,7 @@ export const Navbar: React.FC = () => {
       {/* Scroll progress bar */}
       <motion.div
         style={{ scaleX: scrollYProgress }}
-        className="fixed top-0 left-0 right-0 h-[2px] origin-left bg-gradient-to-r from-blue-500 via-blue-400 to-purple-500 z-[60] pointer-events-none"
+        className="fixed top-0 left-0 right-0 h-[2px] origin-left bg-[var(--color-accent)] z-[60] pointer-events-none"
         aria-hidden="true"
       />
 
@@ -73,10 +73,10 @@ export const Navbar: React.FC = () => {
         aria-label="Main navigation"
         inert={hidden}
       >
-        <div className="pointer-events-auto bg-[var(--color-pill)] backdrop-blur-xl border border-black/5 dark:border-white/10 rounded-full px-5 md:px-8 py-3 flex items-center gap-5 md:gap-8 shadow-2xl transition-colors duration-300">
+        <div className="pointer-events-auto bg-[var(--color-pill)] backdrop-blur-xl border border-[var(--color-border)] rounded-full px-5 md:px-8 py-3 flex items-center gap-5 md:gap-8 shadow-2xl transition-colors duration-150">
           <a
             href="#home"
-            className="font-bold text-lg tracking-tighter text-gray-900 dark:text-white hover:text-blue-500 dark:hover:text-blue-400 transition-colors"
+            className="font-bold text-lg tracking-tighter text-gray-900 dark:text-white hover:text-[var(--color-accent)] transition-colors duration-150"
           >
             UA.
           </a>
@@ -106,7 +106,7 @@ export const Navbar: React.FC = () => {
             <a
               href="/resume.pdf"
               download="Umair_Ahsan_Resume.pdf"
-              className="flex items-center justify-center gap-2 px-3 md:px-4 min-h-[44px] rounded-full border border-black/5 dark:border-white/10 bg-transparent hover:bg-gray-100 dark:hover:bg-white/5 active:scale-95 transition-[background-color,transform] text-sm font-medium text-gray-900 dark:text-white group cursor-pointer"
+              className="flex items-center justify-center gap-2 px-3 md:px-4 min-h-[44px] rounded-full border border-[var(--color-border)] bg-transparent hover:bg-gray-100 dark:hover:bg-white/5 active:scale-95 transition-[background-color,transform] duration-150 text-sm font-medium text-gray-900 dark:text-white group cursor-pointer"
               aria-label="Download CV"
             >
               <Download className="w-4 h-4 group-hover:translate-y-0.5 transition-transform" aria-hidden="true" />
@@ -115,7 +115,7 @@ export const Navbar: React.FC = () => {
 
             <a
               href="#projects"
-              className="bg-gray-900 dark:bg-white text-white dark:text-black px-4 md:px-5 py-2 rounded-full text-xs md:text-sm font-bold hover:bg-blue-600 dark:hover:bg-blue-600 dark:hover:text-white hover:shadow-lg hover:shadow-blue-500/25 active:scale-95 transition-[background-color,color,transform,box-shadow] hidden sm:flex items-center gap-2 cursor-pointer"
+              className="bg-gray-900 dark:bg-white text-white dark:text-black px-4 md:px-5 py-2 rounded-full text-xs md:text-sm font-bold hover:bg-[var(--color-accent)] dark:hover:bg-[var(--color-accent)] dark:hover:text-white hover:shadow-lg hover:shadow-blue-500/25 active:scale-95 transition-[background-color,color,transform,box-shadow] duration-150 hidden sm:flex items-center gap-2 cursor-pointer"
             >
               Work
               <span className="bg-white dark:bg-black text-black dark:text-white rounded-full w-4 h-4 flex items-center justify-center text-[10px]" aria-hidden="true">
@@ -150,7 +150,7 @@ export const Navbar: React.FC = () => {
               animate={{ opacity: 1, y: 0, scale: 1 }}
               exit={{ opacity: 0, y: -12, scale: 0.98 }}
               transition={springs.snappy}
-              className="md:hidden pointer-events-auto mt-3 w-full max-w-[320px] rounded-3xl bg-[var(--color-pill)] backdrop-blur-xl border border-black/5 dark:border-white/10 p-3 flex flex-col shadow-2xl"
+              className="md:hidden pointer-events-auto mt-3 w-full max-w-[320px] rounded-3xl bg-[var(--color-pill)] backdrop-blur-xl border border-[var(--color-border)] p-3 flex flex-col shadow-2xl"
             >
               {NAV_SECTIONS.map(({ id, label }) => (
                 <a

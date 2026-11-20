@@ -35,3 +35,20 @@ for (const file of files) {
 }
 
 console.log(`\nTotal: ${(savedBefore / 1024 / 1024).toFixed(2)}MB -> ${(savedAfter / 1024 / 1024).toFixed(2)}MB`);
+
+/* Portrait: displayed at <=360px wide, so 800px covers 2x displays. The original
+   JPG is kept because og:image needs a broadly supported format. */
+{
+  const input = path.join(DIR, 'umair.jpg');
+  const output = path.join(DIR, 'umair.webp');
+  const before = (await stat(input)).size;
+
+  await sharp(input)
+    .resize({ width: 800, withoutEnlargement: true })
+    .webp({ quality: 82 })
+    .toFile(output);
+
+  const after = (await stat(output)).size;
+  const ratio = ((1 - after / before) * 100).toFixed(1);
+  console.log(`umair.jpg -> umair.webp  ${(before / 1024).toFixed(0)}KB -> ${(after / 1024).toFixed(0)}KB (-${ratio}%)`);
+}

@@ -79,7 +79,7 @@ export const SectionTitle: React.FC<{ children: React.ReactNode; subtitle?: stri
         whileInView="visible"
         viewport={{ once: true }}
         variants={titleVariants}
-        className="text-4xl md:text-6xl font-bold tracking-tighter"
+        className="font-display text-3xl md:text-5xl font-bold tracking-tight"
       >
         {children}
       </motion.h2>
