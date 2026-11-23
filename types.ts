@@ -7,6 +7,8 @@ export interface Project {
   tech: string[];
   image: string;
   link: string;
+  /** Request path through the system, left to right. Rendered as an architecture strip. */
+  flow?: string[];
   /** Public source repo. Omit until the repo is public — the button only renders when set. */
   repo?: string;
   /** Short case study. Each field renders only when present; never invent numbers. */

@@ -33,16 +33,12 @@ export const About: React.FC = () => {
           <p className="text-gray-600 dark:text-gray-400 leading-relaxed mb-6 transition-colors duration-500">
             My strengths include designing clean architectures, developing efficient APIs, implementing authentication/RBAC, building UI/UX with smooth animations, and delivering production-ready, maintainable code.
           </p>
-          <div className="flex gap-4 font-mono text-sm">
-            <span className="px-3 py-1 rounded-full border border-[var(--color-border)] text-gray-600 dark:text-gray-300 theme-transition">Remote</span>
-            <span className="px-3 py-1 rounded-full border border-[var(--color-border)] text-gray-600 dark:text-gray-300 theme-transition">Relocation Available</span>
-          </div>
         </motion.div>
 
         {/* Mobile image - below text, no negative margins */}
         <div className="md:hidden mt-0">
           <motion.div
-            className="relative max-h-[300px] max-w-[280px] mx-auto"
+            className="relative max-w-[280px] mx-auto mb-4"
             initial="hidden"
             whileInView="visible"
             viewport={{ once: true }}
@@ -92,7 +88,36 @@ export const About: React.FC = () => {
           </div>
 
           {/* Decorative Backdrops */}
-          <div className="absolute -top-4 -right-4 w-full h-full border border-gray-400 dark:border-gray-800 rounded-2xl -z-10 transition-colors duration-500" aria-hidden="true"></div>
+          <div className="absolute -top-4 -right-4 w-full h-full border border-[var(--color-border-hover)] rounded-2xl -z-10 transition-colors duration-500" aria-hidden="true"></div>
+        </motion.div>
+        {/* Full-width row: keeps the left column and the photo the same height */}
+        <motion.div
+          className="md:col-span-2"
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true }}
+          variants={fadeUpItem}
+        >
+          <div className="surface overflow-hidden font-mono text-xs sm:text-sm">
+            <div className="px-4 py-2 border-b border-[var(--color-border)] bg-[var(--color-elevated)] text-gray-500">
+              profile.json
+            </div>
+            <dl className="px-4 py-4 grid grid-cols-1 md:grid-cols-2 gap-x-10 gap-y-2 leading-relaxed">
+              {[
+                ['role', 'Backend & AI-Integrated Apps Engineer'],
+                ['focus', 'REST APIs, RBAC, caching, LLM integrations'],
+                ['stack', 'Spring Boot · Nest.js · PostgreSQL · Redis'],
+                ['langs', 'Java, TypeScript, JavaScript, Python, C, C++, SQL'],
+                ['base', 'Karachi, Pakistan'],
+                ['work', 'Remote · Relocation available'],
+              ].map(([k, v]) => (
+                <div key={k} className="flex gap-3 min-w-0">
+                  <dt className="w-12 shrink-0 text-[var(--color-accent)]">{k}</dt>
+                  <dd className="text-gray-700 dark:text-gray-300">{v}</dd>
+                </div>
+              ))}
+            </dl>
+          </div>
         </motion.div>
       </div>
     </Section>

@@ -115,7 +115,7 @@ export const Navbar: React.FC = () => {
 
             <a
               href="#projects"
-              className="bg-gray-900 dark:bg-white text-white dark:text-black px-4 md:px-5 py-2 rounded-full text-xs md:text-sm font-bold hover:bg-[var(--color-accent)] dark:hover:bg-[var(--color-accent)] dark:hover:text-white hover:shadow-lg hover:shadow-blue-500/25 active:scale-95 transition-[background-color,color,transform,box-shadow] duration-150 hidden sm:flex items-center gap-2 cursor-pointer"
+              className="bg-gray-900 dark:bg-white text-white dark:text-black px-4 md:px-5 py-2 rounded-full text-xs md:text-sm font-bold hover:bg-[var(--color-accent)] dark:hover:bg-[var(--color-accent)] dark:hover:text-white hover:shadow-lg hover:shadow-[color:var(--color-accent-glow)] active:scale-95 transition-[background-color,color,transform,box-shadow] duration-150 hidden sm:flex items-center gap-2 cursor-pointer"
             >
               Work
               <span className="bg-white dark:bg-black text-black dark:text-white rounded-full w-4 h-4 flex items-center justify-center text-[10px]" aria-hidden="true">
@@ -159,7 +159,7 @@ export const Navbar: React.FC = () => {
                   onClick={() => setMenuOpen(false)}
                   className={`font-mono text-sm px-4 py-3 rounded-2xl transition-colors cursor-pointer ${
                     active === id
-                      ? "bg-blue-500/10 text-blue-600 dark:text-blue-400"
+                      ? "bg-[var(--color-accent-wash)] text-[var(--color-accent)] "
                       : "text-gray-600 dark:text-gray-300 hover:bg-black/5 dark:hover:bg-white/5"
                   }`}
                 >

@@ -12,7 +12,8 @@ const ThemeContext = createContext<ThemeContextType | undefined>(undefined);
 const getPreferredTheme = (): Theme => {
   const stored = window.localStorage.getItem('theme');
   if (stored === 'light' || stored === 'dark') return stored;
-  return window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
+  /* Dark-first: the terminal aesthetic is the brand. Light is opt-in via the toggle. */
+  return 'dark';
 };
 
 const applyTheme = (theme: Theme) => {
@@ -22,7 +23,7 @@ const applyTheme = (theme: Theme) => {
   root.style.colorScheme = theme;
   window.localStorage.setItem('theme', theme);
   const meta = document.querySelector('meta[name="theme-color"]');
-  if (meta) meta.setAttribute('content', theme === 'dark' ? '#121212' : '#f9fafb');
+  if (meta) meta.setAttribute('content', theme === 'dark' ? '#08090a' : '#f9fafb');
 };
 
 export const ThemeProvider: React.FC<{ children: React.ReactNode }> = ({ children }) => {

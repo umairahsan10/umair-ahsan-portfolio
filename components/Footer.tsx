@@ -9,8 +9,8 @@ const ACTION_BASE =
 
 export const Footer: React.FC = () => {
   return (
-    <footer className="bg-[var(--color-footer)] py-20 px-6 md:px-12 border-t border-[var(--color-border)] theme-transition">
-      <div className="max-w-7xl mx-auto">
+    <footer className="bg-[var(--color-footer)] py-20 border-t border-[var(--color-border)] theme-transition">
+      <div className="max-w-7xl mx-auto px-6 md:px-12">
         <div className="flex flex-col md:flex-row justify-between items-start md:items-end mb-20 gap-10">
           <StaggerGroup stagger={motionTokens.stagger.normal} className="flex flex-col">
             <motion.p
@@ -20,7 +20,7 @@ export const Footer: React.FC = () => {
               }}
               className="font-mono text-gray-500 mb-4"
             >
-              .../Contacts ...
+              $ ./contact --open
             </motion.p>
             <motion.h2
               variants={{
@@ -40,7 +40,7 @@ export const Footer: React.FC = () => {
                 href="https://linkedin.com/in/umair-ahsan-650315250"
                 target="_blank"
                 rel="noopener noreferrer"
-                className={`${ACTION_BASE} hover:bg-[var(--color-accent)] hover:shadow-blue-500/25`}
+                className={`${ACTION_BASE} hover:bg-[var(--color-accent)] hover:shadow-[color:var(--color-accent-glow)]`}
               >
                 <Linkedin className="w-4 h-4 group-hover:rotate-12 transition-transform duration-150 ease-out" aria-hidden="true" />
                 <span className="font-medium">LinkedIn</span>
@@ -49,7 +49,7 @@ export const Footer: React.FC = () => {
                 href="/resume.pdf"
                 download="Umair_Ahsan_Resume.pdf"
                 aria-label="Download resume"
-                className={`${ACTION_BASE} hover:bg-green-600 hover:shadow-green-500/25`}
+                className={`${ACTION_BASE} hover:bg-[var(--color-accent)] hover:shadow-[color:var(--color-accent-glow)]`}
               >
                 <Download className="w-4 h-4 group-hover:translate-y-0.5 transition-transform duration-150 ease-out" aria-hidden="true" />
                 <span className="font-medium">Resume</span>

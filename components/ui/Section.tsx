@@ -71,7 +71,7 @@ export const SectionTitle: React.FC<{ children: React.ReactNode; subtitle?: stri
           transition={{ duration: motionTokens.duration.normal, ease: motionTokens.easing.smooth }}
           className="font-mono text-[var(--color-accent)] mb-4 text-sm tracking-wider uppercase transition-colors duration-500"
         >
-          // {subtitle}
+          <span aria-hidden="true">$ </span>{subtitle.toLowerCase().replace(/ /g, '-')}
         </motion.p>
       )}
       <motion.h2

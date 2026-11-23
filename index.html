@@ -8,7 +8,7 @@
       name="description"
       content="Umair Ahsan — Backend &amp; AI-Integrated Apps Engineer building scalable APIs and LLM-powered products with Java/Spring Boot, Nest.js, PostgreSQL, and Redis."
     />
-    <meta name="theme-color" content="#121212" />
+    <meta name="theme-color" content="#08090a" />
     <meta name="color-scheme" content="light dark" />
     <meta property="og:type" content="website" />
     <meta property="og:title" content="Umair Ahsan | Backend &amp; AI-Integrated Apps Engineer" />
@@ -34,15 +34,13 @@
           var theme =
             stored === 'light' || stored === 'dark'
               ? stored
-              : window.matchMedia('(prefers-color-scheme: dark)').matches
-                ? 'dark'
-                : 'light';
+              : 'dark'; /* dark-first: the terminal aesthetic is the brand */
           var root = document.documentElement;
           root.classList.remove('light', 'dark');
           root.classList.add(theme);
           root.style.colorScheme = theme;
           var meta = document.querySelector('meta[name="theme-color"]');
-          if (meta) meta.setAttribute('content', theme === 'dark' ? '#121212' : '#f9fafb');
+          if (meta) meta.setAttribute('content', theme === 'dark' ? '#08090a' : '#f9fafb');
         } catch (e) {
           document.documentElement.classList.add('dark');
         }

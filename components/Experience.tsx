@@ -2,7 +2,7 @@ import React from 'react';
 import { motion, type Variants } from 'framer-motion';
 import { Section, SectionTitle } from './ui/Section';
 import { Experience as ExperienceType } from '../types';
-import { Briefcase, Calendar, CheckCircle2 } from 'lucide-react';
+import { Briefcase, Calendar } from 'lucide-react';
 import { motionTokens, fadeSideItem } from '../lib/motion-tokens';
 
 /*
@@ -21,10 +21,9 @@ const experiences: ExperienceType[] = [
     role: 'Software Engineer',
     stack: 'Spring Boot, MySQL, Redis, Docker, REST APIs',
     achievements: [
-      'Developing scalable backend systems using Spring Boot, MySQL, Redis, and Docker.',
-      'Building and maintaining RESTful APIs for enterprise-grade applications.',
-      'Optimizing backend services, database queries, and caching layers for performance improvements.',
-      'Working on large-scale repositories following modular architecture and clean coding practices.'
+      'Build and maintain scalable backend services in Spring Boot with MySQL, Redis, and Docker for enterprise-grade applications.',
+      'Design and ship RESTful APIs within a large modular codebase, following clean-architecture and code-review practices.',
+      'Improve service performance by optimizing database queries and Redis caching layers.'
     ]
   },
   {
@@ -32,14 +31,12 @@ const experiences: ExperienceType[] = [
     period: 'June 2025 - June 2026',
     company: 'BytesPak',
     role: 'Full-Stack Developer',
-    stack: 'Next.js, Nest.js, React, PostgreSQL, Prisma, Tailwind',
+    stack: 'Next.js, Nest.js, React, PostgreSQL, Prisma, Supabase',
     achievements: [
-      'Developed multiple full-stack enterprise platforms (CRM, STM, IntelliMaint AI, VerticalWorx).',
-      'Architected complex multi-role systems with RBAC, dashboards, automations, and reporting.',
-      'Built real-time chat, analytics, and scalable workflow systems.',
-      'Worked on AI-powered automation tools using OpenAI APIs and custom scrapers.',
-      'Managed deployments on Vercel, Render, and Supabase.',
-      'Ensured clean, modular, production-ready code.'
+      'Delivered enterprise products end to end, including a multi-department CRM and an AI-powered maintenance platform.',
+      'Built full-stack applications with Next.js, Nest.js, React, PostgreSQL, Prisma, and Supabase.',
+      'Architected multi-role platforms with role-based access control, dashboards, reporting, and workflow automation.',
+      'Owned deployments across Vercel, Render, Supabase, Neon, and Cloudflare.'
     ]
   }
 ];
@@ -62,7 +59,7 @@ const experienceItemVariants: Variants = {
 export const Experience: React.FC = () => {
   return (
     <Section id="experience" className="py-12 md:py-16">
-      <SectionTitle subtitle="Work path">Experience</SectionTitle>
+      <SectionTitle subtitle="Deploy history">Experience</SectionTitle>
 
       <div className="relative">
         {/* Vertical Line */}
@@ -78,6 +75,10 @@ export const Experience: React.FC = () => {
               variants={experienceItemVariants}
               className="relative pl-12 md:pl-24"
             >
+              {/* Release marker */}
+              <div className="absolute left-12 md:left-24 -top-3 font-mono text-[10px] uppercase tracking-wider text-gray-500 hidden md:block" aria-hidden="true">
+                {exp.id === 1 ? 'HEAD → production' : `release v${experiences.length - exp.id + 1}`}
+              </div>
               {/* Timeline Dot */}
               <div className="absolute left-4 md:left-8 top-0 -translate-x-1/2 w-4 h-4 rounded-full bg-[var(--color-accent)] border-4 border-[var(--color-bg)] shadow-lg z-10 theme-transition"></div>
 
@@ -103,7 +104,7 @@ export const Experience: React.FC = () => {
 
                 <div className="mb-6">
                   <div className="text-sm text-gray-500 font-mono mb-3 uppercase tracking-wider">
-                    Achievements
+                    Changelog
                   </div>
                   <ul className="grid grid-cols-1 gap-3">
                     {exp.achievements.map((item) => (
@@ -112,10 +113,7 @@ export const Experience: React.FC = () => {
                         variants={fadeSideItem}
                         className="flex items-start gap-3 text-gray-600 dark:text-gray-300 text-sm leading-relaxed"
                       >
-                        <CheckCircle2
-                          className="w-4 h-4 text-[var(--color-success)] mt-0.5 flex-shrink-0"
-                          aria-hidden="true"
-                        />
+                        <span className="font-mono text-[var(--color-accent)] flex-shrink-0 w-4 text-center" aria-hidden="true">+</span>
                         <span>{item}</span>
                       </motion.li>
                     ))}

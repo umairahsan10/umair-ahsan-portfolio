@@ -23,31 +23,33 @@ const projectGroups: {
         id: 7,
         title: 'InsureLink (FYP)',
         description:
-          'A centralized health-insurance automation platform that connects hospitals, insurers, corporates, and patients. Enables real-time eligibility verification, automated claim workflows, transparent communication, and an AI-powered chatbot for claim and policy guidance.',
-        tech: ['Next.js', 'Nest.js', 'PostgreSQL', 'OpenAI API', 'RBAC', 'Automation'],
+          'A multi-tenant health-insurance claims platform connecting hospitals, insurers, corporates, and policyholders. Covers claim submission, reimbursement workflows, real-time tracking, secure document management, and internal messaging.',
+        tech: ['Next.js', 'Nest.js', 'PostgreSQL', 'Prisma', 'RBAC', 'Automation'],
         image: 'projects/FYP.webp',
         link: 'https://insure-link-henna.vercel.app/',
+        flow: ['Next.js', 'Nest.js API', 'RBAC', 'Prisma', 'PostgreSQL'],
         // TODO: add `repo` (public GitHub URL), `role`, and a defensible `result`.
         caseStudy: {
           problem:
-            'Hospitals, insurers, corporates, and patients ran claims and eligibility checks through disconnected, manual processes.',
-          stack: 'Nest.js API, PostgreSQL, role-based access per party, OpenAI API for the policy/claim chatbot.',
+            'Hospitals, insurers, corporates, and patients ran claims and reimbursements through disconnected, manual processes.',
+          stack: 'Multi-tenant Nest.js API with Prisma on PostgreSQL, role-based access per party, secure document management, workflow automation to shorten claim turnaround.',
         },
       },
       {
         id: 1,
         title: 'CRM Platform',
         description:
-          'An enterprise CRM with real-time chat, analytics dashboards, multi-department workflows, and automated reporting.',
+          'An enterprise CRM connecting sales, HR, development, and accounts teams, with real-time chat, Kanban boards, analytics dashboards, and workflow systems.',
         tech: ['Next.js', 'Nest.js', 'PostgreSQL', 'Prisma', 'Supabase'],
         image: 'projects/crm.webp',
         link: 'https://crm-frontend-eight-gamma.vercel.app/',
+        flow: ['Next.js', 'Nest.js API', 'Prisma', 'PostgreSQL'],
         // TODO: add `repo`, and a defensible `result`.
         caseStudy: {
           problem:
             'Multiple departments needed one system for customer workflows, internal chat, and reporting instead of separate tools.',
           role: 'Full-stack developer at BytesPak.',
-          stack: 'Nest.js + Prisma on PostgreSQL (Supabase), Next.js front end, real-time chat.',
+          stack: 'Nest.js + Prisma on PostgreSQL (Supabase), Next.js front end, real-time chat and Kanban boards.',
         },
       },
       {
@@ -70,22 +72,23 @@ const projectGroups: {
         title: 'IntelliMaint AI',
         description:
           'AI-powered maintenance assistant that generates step-by-step troubleshooting guides from images and voice commands.',
-        tech: ['Next.js', 'OpenAI APIs', 'Voice Input', 'Image Recognition', 'Tailwind CSS'],
+        tech: ['Next.js', 'Nest.js', 'OpenAI APIs', 'Supabase', 'Google OAuth', 'Voice & Image Input'],
         image: 'projects/intellimaint.webp',
         link: 'https://intellimaint-ai.vercel.app/',
+        flow: ['Image / Voice', 'Next.js', 'Nest.js', 'OpenAI', 'Guide'],
         // TODO: add `repo`, and a defensible `result`.
         caseStudy: {
           problem:
             'Maintenance technicians lose time hunting through manuals to diagnose faults on the shop floor.',
           role: 'Full-stack developer at BytesPak.',
-          stack: 'Next.js, OpenAI APIs for image and voice input, generating step-by-step troubleshooting guides.',
+          stack: 'Next.js + Nest.js, OpenAI APIs for voice and image input, Google OAuth sign-in, Supabase-backed storage.',
         },
       },
       {
         id: 3,
         title: 'Email Automation System',
         description:
-          'Client-built outreach pipeline: a Node.js backend that queues, personalizes (OpenAI), and sends email campaigns, with delivery tracking and follow-up automation.',
+          'Outreach pipeline built for a private client (name withheld): a Node.js backend that queues, personalizes (OpenAI), and sends email campaigns, with delivery tracking and follow-up automation.',
         tech: ['Next.js', 'Node.js', 'OpenAI APIs', 'Automation'],
         image: 'projects/email-automation.webp',
         link: 'http://email-frontend-bytes.vercel.app/',
@@ -128,6 +131,14 @@ const orderedGroups = projectGroups.map((group, gi) => {
     items: group.projects.map((project, i) => ({ project, order: offset + i })),
   };
 });
+
+/* Chips that the request-path strip already shows are dropped, so the same
+   stack isn't printed twice. Compares on letters/digits only ("Nest.js API" ~ "Nest.js"). */
+const norm = (s: string) => s.toLowerCase().replace(/\s*apis?$/, '').replace(/[^a-z0-9]/g, '');
+const extraTech = (p: Project) =>
+  p.flow ? p.tech.filter((t) => !p.flow!.some((f) => norm(f) === norm(t))) : p.tech;
+
+const totalProjects = projectGroups.reduce((n, g) => n + g.projects.length, 0);
 
 /** Project visual: cursor-following glow + subtle 3D tilt on hover. */
 const ProjectVisual: React.FC<{ project: Project }> = ({ project }) => {
@@ -183,6 +194,7 @@ const ProjectVisual: React.FC<{ project: Project }> = ({ project }) => {
           <div className="w-2 h-2 rounded-full bg-red-500"></div>
           <div className="w-2 h-2 rounded-full bg-yellow-500"></div>
           <div className="w-2 h-2 rounded-full bg-green-500"></div>
+          <span className="ml-3 -mt-1 font-mono text-[10px] text-gray-500">{new URL(project.link).host}</span>
         </div>
       </motion.div>
     </a>
@@ -199,7 +211,7 @@ export const Projects: React.FC = () => {
           <div key={group.label}>
             <header className="flex flex-col sm:flex-row sm:items-baseline sm:justify-between gap-2 border-b border-[var(--color-border)] pb-4 mb-10 md:mb-14">
               <h3 className="font-mono text-sm uppercase tracking-wider text-[var(--color-accent)]">
-                {group.label}
+                ~/{group.label.toLowerCase().replace(/[^a-z]+/g, '-')}/
               </h3>
               <p className="text-sm text-gray-500">{group.note}</p>
             </header>
@@ -220,12 +232,36 @@ export const Projects: React.FC = () => {
 
                   {/* Content Side */}
                   <div className="w-full md:w-2/5">
+                    <p className="font-mono text-xs text-[var(--color-accent)] mb-2" aria-hidden="true">
+                      {String(order + 1).padStart(2, '0')} / {String(totalProjects).padStart(2, '0')}
+                    </p>
                     <h4 className="font-display text-2xl md:text-3xl font-bold mb-4 text-gray-900 dark:text-white theme-transition">
                       {project.title}
                     </h4>
 
+                    {project.flow && (
+                      <div
+                        className="mb-5 flex flex-wrap items-center gap-x-2 gap-y-1 font-mono text-[11px] text-gray-500"
+                        aria-label={`Request path: ${project.flow.join(' to ')}`}
+                      >
+                        {project.flow.map((node, i) => (
+                          <React.Fragment key={node}>
+                            {i > 0 && (
+                              <span className="text-[var(--color-accent)]" aria-hidden="true">
+                                →
+                              </span>
+                            )}
+                            <span className="px-2 py-0.5 rounded border border-[var(--color-border)] bg-[var(--color-chip)] text-gray-700 dark:text-gray-300 whitespace-nowrap">
+                              {node}
+                            </span>
+                          </React.Fragment>
+                        ))}
+                      </div>
+                    )}
+
+                    {extraTech(project).length > 0 && (
                     <div className="flex flex-wrap gap-2 mb-6">
-                      {project.tech.map((t) => (
+                      {extraTech(project).map((t) => (
                         <span
                           key={t}
                           className="px-3 py-1 rounded-full bg-[var(--color-chip)] border border-[var(--color-border)] text-xs font-mono text-gray-600 dark:text-gray-400 theme-transition"
@@ -234,6 +270,7 @@ export const Projects: React.FC = () => {
                         </span>
                       ))}
                     </div>
+                    )}
 
                     <p className="text-gray-600 dark:text-gray-400 mb-6 leading-relaxed theme-transition">
                       {project.description}
@@ -265,7 +302,7 @@ export const Projects: React.FC = () => {
                       href={project.link}
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="inline-flex items-center gap-2 px-6 py-3 bg-gray-900 dark:bg-white text-white dark:text-black rounded-full font-medium hover:bg-[var(--color-accent)] dark:hover:bg-[var(--color-accent)] dark:hover:text-white hover:shadow-lg hover:shadow-blue-500/25 active:scale-[0.97] transition-[background-color,color,transform,box-shadow] duration-150 ease-out group cursor-pointer"
+                      className="inline-flex items-center gap-2 px-6 py-3 bg-gray-900 dark:bg-white text-white dark:text-black rounded-full font-medium hover:bg-[var(--color-accent)] dark:hover:bg-[var(--color-accent)] dark:hover:text-white hover:shadow-lg hover:shadow-[color:var(--color-accent-glow)] active:scale-[0.97] transition-[background-color,color,transform,box-shadow] duration-150 ease-out group cursor-pointer"
                     >
                       View Project
                       <ArrowUpRight

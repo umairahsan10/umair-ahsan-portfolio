@@ -51,8 +51,8 @@ export const Skills: React.FC = () => {
         transition={{ duration: motionTokens.duration.normal }}
         className="mt-12 flex justify-between items-center text-xs font-mono text-gray-500 border-t border-[var(--color-border)] pt-6 theme-transition"
       >
-        <span>{skills.length} categories</span>
-        <span>{totalSkills} technologies</span>
+        <span>$ ls ~ | wc -l → {skills.length} directories</span>
+        <span>{totalSkills} modules loaded</span>
       </motion.div>
     </Section>
   );
@@ -75,16 +75,21 @@ const SkillCard: React.FC<{ category: SkillCategory }> = ({ category }) => {
           <div className="w-12 h-12 rounded-2xl flex items-center justify-center transition-colors duration-150 bg-[var(--color-chip)] text-gray-600 dark:text-gray-400 group-hover:bg-[var(--color-accent)] group-hover:text-white">
             <category.icon className="w-6 h-6" aria-hidden="true" />
           </div>
-          <h3 className="font-display text-lg md:text-xl font-bold tracking-tight text-gray-900 dark:text-gray-100">
-            {category.title}
-          </h3>
+          <div>
+            <h3 className="font-display text-lg md:text-xl font-bold tracking-tight text-gray-900 dark:text-gray-100">
+              {category.title}
+            </h3>
+            <p className="font-mono text-xs text-gray-500 mt-0.5">
+              ~/{category.title.toLowerCase().replace(/[^a-z]+/g, '-')} · {category.skills.length} modules
+            </p>
+          </div>
         </div>
 
         <div className="flex flex-wrap gap-2">
           {category.skills.map((skill) => (
             <span
               key={skill}
-              className="px-3 py-1.5 text-sm font-mono rounded-lg bg-[var(--color-chip)] text-gray-600 dark:text-gray-400 border border-[var(--color-border)] hover:border-[var(--color-border-hover)] hover:text-gray-900 dark:hover:text-gray-200 transition-[color,border-color] duration-150 ease-out theme-transition"
+              className="px-3 py-1.5 text-sm font-mono rounded-lg before:content-['+_'] before:text-[var(--color-accent)] bg-[var(--color-chip)] text-gray-600 dark:text-gray-400 border border-[var(--color-border)] hover:border-[var(--color-border-hover)] hover:text-gray-900 dark:hover:text-gray-200 transition-[color,border-color] duration-150 ease-out theme-transition"
             >
               {skill}
             </span>

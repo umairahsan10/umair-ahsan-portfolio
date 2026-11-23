@@ -71,13 +71,13 @@ export const Cursor: React.FC = () => {
     <>
       {/* Dot — exactly on the pointer */}
       <motion.div
-        className="fixed top-0 left-0 w-2 h-2 -ml-1 -mt-1 bg-blue-500 rounded-full pointer-events-none z-[9999]"
+        className="fixed top-0 left-0 w-2 h-2 -ml-1 -mt-1 bg-[var(--color-accent)] rounded-full pointer-events-none z-[9999]"
         style={{ x, y, opacity: visible ? 1 : 0, willChange: 'transform' }}
         aria-hidden="true"
       />
       {/* Ring — trails with a fast spring */}
       <motion.div
-        className="fixed top-0 left-0 w-8 h-8 -ml-4 -mt-4 border border-blue-500/50 rounded-full pointer-events-none z-[9998]"
+        className="fixed top-0 left-0 w-8 h-8 -ml-4 -mt-4 border border-[color:var(--color-accent-glow)] rounded-full pointer-events-none z-[9998]"
         style={{ x: ringX, y: ringY, opacity: visible ? 1 : 0, willChange: 'transform' }}
         animate={{ scale: hovering ? 1.6 : 1 }}
         transition={springs.snappy}
