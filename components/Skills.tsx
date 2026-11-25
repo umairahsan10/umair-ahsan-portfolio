@@ -5,7 +5,7 @@ import { Section, SectionTitle, StaggerGroup, StaggerItem } from './ui/Section';
 import { SkillCategory } from '../types';
 import { motionTokens } from '../lib/motion-tokens';
 
-const skills: SkillCategory[] = [
+export const skills: SkillCategory[] = [
   {
     title: 'Backend Engineering',
     icon: Server,

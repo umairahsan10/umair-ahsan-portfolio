@@ -1,10 +1,12 @@
 import React, { createContext, useContext, useEffect, useState } from 'react';
+import { flushSync } from 'react-dom';
 
 type Theme = 'dark' | 'light';
 
 interface ThemeContextType {
   theme: Theme;
-  toggleTheme: () => void;
+  /** Pass the click point to start the circular wipe there. */
+  toggleTheme: (origin?: { x: number; y: number }) => void;
 }
 
 const ThemeContext = createContext<ThemeContextType | undefined>(undefined);
@@ -46,8 +48,40 @@ export const ThemeProvider: React.FC<{ children: React.ReactNode }> = ({ childre
     return () => window.removeEventListener('storage', onStorage);
   }, []);
 
-  const toggleTheme = () => {
-    setTheme((prev) => (prev === 'dark' ? 'light' : 'dark'));
+  /*
+   * Circular wipe: the View Transitions API snapshots the old page, the new
+   * theme is applied synchronously, and the new snapshot is revealed through
+   * a growing circle from the click point. Colour transitions are suspended
+   * during the switch so the new snapshot is captured in its final colours.
+   * Falls back to an instant switch without API support or with reduced motion.
+   */
+  const toggleTheme = (origin?: { x: number; y: number }) => {
+    const next: Theme = theme === 'dark' ? 'light' : 'dark';
+    const doc = document as Document & {
+      startViewTransition?: (cb: () => void) => { ready: Promise<void>; finished: Promise<void> };
+    };
+    if (!doc.startViewTransition || window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+      setTheme(next);
+      return;
+    }
+    const x = origin?.x ?? window.innerWidth - 48;
+    const y = origin?.y ?? 48;
+    const r = Math.hypot(Math.max(x, window.innerWidth - x), Math.max(y, window.innerHeight - y));
+    const root = document.documentElement;
+    root.classList.add('theme-switching');
+    const t = doc.startViewTransition(() => {
+      flushSync(() => setTheme(next));
+      applyTheme(next);
+    });
+    t.ready
+      .then(() => {
+        root.animate(
+          { clipPath: [`circle(0px at ${x}px ${y}px)`, `circle(${r}px at ${x}px ${y}px)`] },
+          { duration: 650, easing: 'cubic-bezier(0.7, 0, 0.3, 1)', pseudoElement: '::view-transition-new(root)' },
+        );
+      })
+      .catch(() => {});
+    t.finished.finally(() => root.classList.remove('theme-switching'));
   };
 
   return (

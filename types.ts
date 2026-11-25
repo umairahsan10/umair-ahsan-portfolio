@@ -3,6 +3,10 @@ import type { LucideIcon } from 'lucide-react';
 export interface Project {
   id: number;
   title: string;
+  /** One line for the grid card; the full description shows in the detail view. */
+  summary?: string;
+  /** Spans two columns in the grid. */
+  featured?: boolean;
   description: string;
   tech: string[];
   image: string;

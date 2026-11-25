@@ -13,7 +13,7 @@ import { motionTokens, fadeSideItem } from '../lib/motion-tokens';
  * available on this page. No figures have been invented here on purpose —
  * add only numbers that can be defended in an interview.
  */
-const experiences: ExperienceType[] = [
+export const experiences: ExperienceType[] = [
   {
     id: 1,
     period: 'June 2026 - Present',

@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { motion, useScroll, useMotionValueEvent, AnimatePresence } from "framer-motion";
-import { Sun, Moon, Download, Menu, X } from "lucide-react";
+import { Sun, Moon, Download, Menu, X, SquareTerminal } from "lucide-react";
+import { openTerminal, terminalSeen } from "./ui/Terminal";
 import { useTheme } from "../context/ThemeContext";
 import { springs } from "../lib/motion-tokens";
 
@@ -16,6 +17,13 @@ export const Navbar: React.FC = () => {
   const [menuOpen, setMenuOpen] = useState(false);
   const { scrollY, scrollYProgress } = useScroll();
   const { theme, toggleTheme } = useTheme();
+  const [termSeen, setTermSeen] = useState(terminalSeen);
+
+  useEffect(() => {
+    const onSeen = () => setTermSeen(true);
+    window.addEventListener("terminal:seen", onSeen);
+    return () => window.removeEventListener("terminal:seen", onSeen);
+  }, []);
 
   useMotionValueEvent(scrollY, "change", (latest) => {
     const previous = scrollY.getPrevious() ?? 0;
@@ -91,7 +99,26 @@ export const Navbar: React.FC = () => {
 
           <div className="flex items-center gap-3 md:gap-4">
             <button
-              onClick={toggleTheme}
+              onClick={() => openTerminal()}
+              className="relative group h-11 min-w-[44px] px-3 flex items-center justify-center gap-2 rounded-full bg-gray-100 dark:bg-white/10 text-gray-600 dark:text-gray-300 hover:bg-gray-200 dark:hover:bg-white/20 hover:text-[var(--color-accent)] active:scale-95 transition-colors cursor-pointer"
+              aria-label="Open terminal"
+              title="Open terminal (Ctrl/⌘ + K)"
+            >
+              <SquareTerminal className="w-4 h-4" aria-hidden="true" />
+              {!termSeen && (
+                <span className="absolute top-1.5 right-1.5 flex h-2 w-2" aria-hidden="true">
+                  <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-[var(--color-accent)] opacity-70" />
+                  <span className="relative inline-flex h-2 w-2 rounded-full bg-[var(--color-accent)]" />
+                </span>
+              )}
+              <kbd className="hidden lg:inline font-mono text-[10px] text-gray-500 group-hover:text-[var(--color-accent)]">⌘K</kbd>
+            </button>
+
+            <button
+              onClick={(e) => {
+                const r = e.currentTarget.getBoundingClientRect();
+                toggleTheme({ x: r.left + r.width / 2, y: r.top + r.height / 2 });
+              }}
               className="w-11 h-11 flex items-center justify-center rounded-full bg-gray-100 dark:bg-white/10 text-gray-600 dark:text-gray-300 hover:bg-gray-200 dark:hover:bg-white/20 active:scale-95 transition-colors cursor-pointer"
               aria-label={`Switch to ${theme === "dark" ? "light" : "dark"} theme`}
               aria-pressed={theme === "dark"}
