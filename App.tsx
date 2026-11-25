@@ -11,6 +11,9 @@ import { Achievements } from "./components/Achievements";
 import { Footer } from "./components/Footer";
 import { ThemeProvider } from "./context/ThemeContext";
 import { Cursor } from "./components/ui/Cursor";
+import { Terminal } from "./components/ui/Terminal";
+import { ScrollTrace } from "./components/ui/ScrollTrace";
+import { SpotlightGrid } from "./components/ui/SpotlightGrid";
 
 function AppContent() {
   useEffect(() => {
@@ -48,11 +51,14 @@ function AppContent() {
   }, []);
 
   return (
-    <div className="bg-[var(--color-bg)] min-h-screen text-gray-900 dark:text-white transition-colors duration-500">
+    <div className="relative isolate bg-[var(--color-bg)] min-h-screen text-gray-900 dark:text-white transition-colors duration-500">
       <a href="#main" className="skip-link">
         Skip to content
       </a>
       <Cursor />
+      <Terminal />
+      <ScrollTrace />
+      <SpotlightGrid />
       <Navbar />
       <main id="main" tabIndex={-1}>
         <Hero />

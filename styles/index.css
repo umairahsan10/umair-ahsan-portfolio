@@ -107,6 +107,65 @@ body {
   }
 }
 
+/* System map tooltip entrance (opacity only, so it composes with the
+   positioning transform set inline) */
+@keyframes tipIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+/* Rotating border light on the terminal CTA */
+@keyframes cta-spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+.cta-spin {
+  animation: cta-spin 3.2s linear infinite;
+}
+
+/* Scroll trace */
+@keyframes hop-pop {
+  0% {
+    transform: scale(0.9);
+  }
+  60% {
+    transform: scale(1.08);
+  }
+  100% {
+    transform: scale(1);
+  }
+}
+@keyframes hop-ring {
+  from {
+    transform: translate(-50%, -50%) scale(1);
+    opacity: 0.8;
+  }
+  to {
+    transform: translate(-50%, -50%) scale(1.35, 2.2);
+    opacity: 0;
+  }
+}
+
+/* Theme wipe (View Transitions): the circle is animated from JS, so the
+   default cross-fade is switched off, and colour transitions are suspended
+   while the switch is captured. */
+::view-transition-old(root),
+::view-transition-new(root) {
+  animation: none;
+  mix-blend-mode: normal;
+}
+.theme-switching,
+.theme-switching *,
+.theme-switching *::before,
+.theme-switching *::after {
+  transition: none !important;
+}
+
 /* Visible keyboard focus */
 :focus-visible {
   outline: 2px solid var(--color-accent);
@@ -128,7 +187,8 @@ body {
     transition-duration: 0.01ms !important;
   }
   .animate-ping,
-  .animate-pulse {
+  .animate-pulse,
+  .cta-spin {
     animation: none !important;
   }
 }

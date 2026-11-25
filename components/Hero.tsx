@@ -14,8 +14,9 @@ import {
   ArrowRight,
   ArrowDown,
 } from 'lucide-react';
+import { TerminalCta } from './ui/TerminalCta';
 import { motionTokens } from '../lib/motion-tokens';
-import { RequestLog } from './ui/RequestLog';
+import { SystemMap } from './ui/SystemMap';
 
 /* Text block choreography: identity → name → role → claim → actions */
 const textContainer: Variants = {
@@ -81,7 +82,7 @@ export const Hero: React.FC = () => {
   return (
     <section
       id="home"
-      className="min-h-screen flex flex-col relative overflow-hidden pt-16 xl:pt-32 pb-16 xl:pb-32 transition-colors duration-500"
+      className="min-h-screen flex flex-col relative overflow-hidden pt-28 xl:pt-32 pb-16 xl:pb-32 transition-colors duration-500"
     >
       {/* Background — the original radial wash, restored at the user's request */}
       <div className="absolute inset-0 bg-[var(--color-deep)] z-0 theme-transition" aria-hidden="true">
@@ -173,6 +174,10 @@ export const Hero: React.FC = () => {
               healthcare, and CRM teams.
             </motion.p>
 
+            <motion.div variants={fadeItem} className="mb-5">
+              <TerminalCta />
+            </motion.div>
+
             <motion.div variants={fadeItem} className="flex flex-wrap items-center gap-3 mb-8">
               <a
                 href="mailto:umairahsan2019@gmail.com"
@@ -203,7 +208,7 @@ export const Hero: React.FC = () => {
             </motion.div>
           </motion.div>
 
-          <RequestLog />
+          <SystemMap />
         </div>
 
         {/* Scroll cue — a real link, not decoration. Suppressed on short
